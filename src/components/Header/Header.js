@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 export default function Header() {
     return (
 
@@ -15,29 +17,29 @@ export default function Header() {
                         <div className="text-xs-center tm-navbar-rounded" id="tmNavbar">
                             <ul className="nav navbar-nav">
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#top">
+                                    <Link className="nav-link" to="/">
                                         Drawings gallery
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#tm-section-1">
+                                    <Link className="nav-link" to="/competitors">
                                         Competitors
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#tm-section-3">
+                                    <Link className="nav-link" to="/login">
                                         Login
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link external" href="elements.html">
+                                    <Link className="nav-link external" to="/register">
                                         Registration
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#tm-section-4">
+                                    <Link className="nav-link" to="/logout">
                                         Logout
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
