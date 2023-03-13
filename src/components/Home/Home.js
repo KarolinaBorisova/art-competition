@@ -10,7 +10,7 @@ export default function Home() {
     useEffect(() => {
         drawingService.getAll()
             .then(result => {
-                setDrawings(result);
+            setDrawings(Object.values(result));
             });
     }, []);
 
@@ -19,8 +19,12 @@ export default function Home() {
         <>
             <h1 className="tm-site-title gallery">Gallery</h1>
             <div className="card-deck">
-                {console.log(drawings)};
-                {/* {drawings.map(x=> <Card drawing={x}/>)} */}
+                {drawings.length > 0
+
+                ?drawings.map(x=> <Card key={x._id} drawing={x}/>)
+                : <h2>No drawings yet</h2>
+                } 
+               
             </div>
         </>
     );
