@@ -1,5 +1,24 @@
 import './Login.css';
+import { login } from '../../services/authService';
+
 export default function Login() {
+
+   
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const {
+            email,
+            password,
+        } = Object.fromEntries(new FormData(e.target));
+
+        login(email,password)
+        .then(authData =>{
+            console.log(authData);
+        });
+    };
+
+
     return (
         <div className="form">
             <div className="form-toggle" />
@@ -8,13 +27,13 @@ export default function Login() {
                     <h1>Account Login</h1>
                 </div>
                 <div className="form-content">
-                    <form>
+                    <form onSubmit={onSubmit}>
                         <div className="form-group">
-                            <label htmlFor="username">Username</label>
+                            <label htmlFor="email">Email</label>
                             <input
                                 type="text"
-                                id="username"
-                                name="username"
+                                id="email"
+                                name="email"
                                 required="required"
                             />
                         </div>

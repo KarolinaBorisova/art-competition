@@ -1,7 +1,7 @@
+import { request } from "./utils/requestService";
+
+
 const baseUrl = 'http://localhost:3030';
 
-export const  getAll = () => {
-
-    return fetch(`${baseUrl}/jsonstore/data/drawings`)
-    .then(res => res.json())
-};
+export const  getAll = () =>  request('GET',`${baseUrl}/jsonstore/data/drawings`);
+   

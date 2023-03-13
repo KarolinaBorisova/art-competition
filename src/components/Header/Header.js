@@ -26,6 +26,7 @@ export default function Header() {
                                         About
                                     </Link>
                                 </li>
+
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/competitors">
                                         Competitors
@@ -42,10 +43,16 @@ export default function Header() {
                                     </Link>
                                 </li>
                                 <li className="nav-item">
+                                    <Link className="nav-link" to="/create">
+                                        Add drawing
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
                                     <Link className="nav-link" to="/logout">
                                         Logout
                                     </Link>
                                 </li>
+                              
                             </ul>
                         </div>
                     </nav>
