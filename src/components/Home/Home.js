@@ -24,7 +24,6 @@ export default function Home() {
                 ?drawings.map(x=> <Card key={x._id} drawing={x}/>)
                 : <h2>No drawings yet</h2>
                 } 
-               
             </div>
         </>
     );
