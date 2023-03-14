@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
     return (
@@ -11,56 +11,60 @@ export default function Header() {
                 </div>
             </div>
             <div className="row tm-navbar-row tm-navbar-row-absolute">
-            <div className="tm-navbar-container">
-                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <nav className="navbar navbar-full">
-                        <div className="text-xs-center tm-navbar-rounded" id="tmNavbar">
-                            <ul className="nav navbar-nav">
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/">
-                                        Drawings gallery
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/about">
-                                        About
-                                    </Link>
-                                </li>
+                <div className="tm-navbar-container">
+                    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <nav className="navbar navbar-full">
+                            <div className="text-xs-center tm-navbar-rounded" id="tmNavbar">
+                                <ul className="nav navbar-nav">
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/">
+                                            Home
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/gallery">
+                                            Drawings gallery
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/categories">
+                                            Age categories
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/competitors">
+                                            Competitors
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/login">
+                                            Login
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link external" to="/register">
+                                            Registration
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/create">
+                                            Add drawing
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/logout">
+                                            Logout
+                                        </Link>
+                                    </li>
 
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/competitors">
-                                        Competitors
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/login">
-                                        Login
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link external" to="/register">
-                                        Registration
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/create">
-                                        Add drawing
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/logout">
-                                        Logout
-                                    </Link>
-                                </li>
-                              
-                            </ul>
-                        </div>
-                    </nav>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>{" "}
+                    {/* col-xs-12 */}
                 </div>{" "}
-                {/* col-xs-12 */}
-            </div>{" "}
-            {/* tm-navbar-container */}
-        </div>
+                {/* tm-navbar-container */}
+            </div>
         </div>
 
     )

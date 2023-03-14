@@ -1,10 +1,11 @@
-import About from "./components/About/About";
-import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
+import Header from "./components/Header/Header";
+import Gallery from "./components/Gallery/Gallery";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Create from "./components/Create/Create"
 import {Routes , Route} from 'react-router-dom';
+import Categories from "./components/Header/Categories/Categories";
 
 
 /*eslint-disable*/
@@ -18,14 +19,11 @@ function App() {
                  <Route path="/" element={ <Home/>}/>
                  <Route path="/login" element={ <Login/>}/>
                  <Route path="/register" element={ <Register/>}/>
-                 <Route path="/about" element={ <About/>}/>
                  <Route path="/create" element={<Create/>}/>
+                 <Route path="/gallery" element={<Gallery/>}/>
+                 <Route path="/categories" element={ <Categories/>}/>
              </Routes>
-            </main>
-            {/* <About />
-            <Login />
-            <Register /> */}
-           
+            </main>       
         </div>
     );
 }

@@ -3,7 +3,7 @@
  
  
  
- const Card = ({
+ const Drawing = ({
      drawing
     }) => {
 
@@ -12,18 +12,17 @@
         <div className="card-drawing">
         <img src={ drawing.img} className="card-img-top" alt="..." />
         <div className="card-body">
-          <h5 className="card-title">User: {drawing.text}</h5>
+          <h5 className="card-title">Title: {drawing.text}</h5>
           <p className="card-text">
-            This is a wider card with supporting text below as a natural lead-in to
-            additional content. This content is a little bit longer.
+           Author:
           </p>
         </div>
         <div className="card-footer">
-          <small className="text-muted">Last updated 3 mins ago</small>
+          <small className="text-muted">Votes</small>
         </div>
       </div>
       </>
     );
  };
 
- export default Card;
+ export default Drawing;
