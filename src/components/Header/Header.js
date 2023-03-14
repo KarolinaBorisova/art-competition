@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+
+import { AuthContext } from '../../contexts/AuthContext';
 
 export default function Header() {
+    const { user } = useContext(AuthContext);
+
     return (
 
         <div id="top" className="tm-header-container">
@@ -23,7 +28,7 @@ export default function Header() {
                                     </li>
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/gallery">
-                                            Drawings gallery
+                                            Gallery
                                         </Link>
                                     </li>
                                     <li className="nav-item">
@@ -31,32 +36,34 @@ export default function Header() {
                                             Age categories
                                         </Link>
                                     </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/competitors">
-                                            Competitors
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/login">
-                                            Login
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link external" to="/register">
-                                            Registration
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/create">
-                                            Add drawing
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/logout">
-                                            Logout
-                                        </Link>
-                                    </li>
+                                    {user.accessToken
+                                        ? <>
 
+                                            <li className="nav-item">
+                                                <Link className="nav-link" to="/create">
+                                                    Add drawing
+                                                </Link>
+                                            </li>
+                                            <li className="nav-item">
+                                                <Link className="nav-link" to="/logout">
+                                                    Logout
+                                                </Link>
+                                            </li>
+                                        </>
+                                        :
+                                        <>
+                                            <li className="nav-item">
+                                                <Link className="nav-link" to="/login">
+                                                    Login
+                                                </Link>
+                                            </li>
+                                            <li className="nav-item">
+                                                <Link className="nav-link external" to="/register">
+                                                    Registration
+                                                </Link>
+                                            </li>
+                                        </>
+                                    }
                                 </ul>
                             </div>
                         </nav>

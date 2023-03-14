@@ -1,8 +1,13 @@
-import './Login.css';
-import { login } from '../../services/authService';
 import {useNavigate} from 'react-router-dom';
+import { useContext } from 'react';
+
+import * as authService from '../../services/authService';
+import { AuthContext } from '../../contexts/AuthContext';
+
+import './Login.css';
 
 export default function Login() {
+    const {userLogin} = useContext(AuthContext);
     const navigate = useNavigate();
    
     const onSubmit = (e) => {
@@ -13,9 +18,11 @@ export default function Login() {
             password,
         } = Object.fromEntries(new FormData(e.target));
 
-        login(email,password)
+        authService.login(email,password)
         .then(authData =>{
-            console.log(authData);
+            userLogin(authData);
+            navigate('/');
+
         }).catch(() => {
             navigate('/error')
         })
