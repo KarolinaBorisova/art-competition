@@ -1,8 +1,9 @@
 import './Login.css';
 import { login } from '../../services/authService';
+import {useNavigate} from 'react-router-dom';
 
 export default function Login() {
-
+    const navigate = useNavigate();
    
     const onSubmit = (e) => {
         e.preventDefault();
@@ -15,7 +16,9 @@ export default function Login() {
         login(email,password)
         .then(authData =>{
             console.log(authData);
-        });
+        }).catch(() => {
+            navigate('/error')
+        })
     };
 
 

@@ -6,6 +6,8 @@ import Register from "./components/Register/Register";
 import Create from "./components/Create/Create"
 import {Routes , Route} from 'react-router-dom';
 import Categories from "./components/Header/Categories/Categories";
+import Error from "./components/Error/Error";
+// import DrawingDetail from "./components/DrawingDetail/DrawingDetail";
 
 
 /*eslint-disable*/
@@ -22,6 +24,8 @@ function App() {
                  <Route path="/create" element={<Create/>}/>
                  <Route path="/gallery" element={<Gallery/>}/>
                  <Route path="/categories" element={ <Categories/>}/>
+                 <Route path="/error" element={ <Error/>}/>
+                 {/* <Route path="/gallery/:drawingId" element={ <DrawingDetail/>}/> */}
              </Routes>
             </main>       
         </div>

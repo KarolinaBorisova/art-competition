@@ -1,0 +1,13 @@
+
+.deatil-link:hover{
+   cursor: pointer;
+}
+
+.card-text,
+.card-title,
+.deatil-link{
+    font-size: 25px;
+    padding: 12px 0px;
+    margin: 5px 10px;
+    
+}

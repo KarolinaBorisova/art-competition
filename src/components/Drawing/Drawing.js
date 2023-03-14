@@ -1,8 +1,7 @@
  
- 
- 
- 
- 
+import { Link } from 'react-router-dom';
+import './Drawing.css' 
+
  const Drawing = ({
      drawing
     }) => {
@@ -17,9 +16,7 @@
            Author:
           </p>
         </div>
-        <div className="card-footer">
-          <small className="text-muted">Votes</small>
-        </div>
+        {/* <Link className="deatil-link" to={`/gallery/${drawing._id}`}>Details</Link> */}
       </div>
       </>
     );

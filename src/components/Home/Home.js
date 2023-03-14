@@ -14,10 +14,10 @@ export default function Home() {
                             We hold this contest to give an opportunity for children to build confidence, learn new things and most important to have fun!
 
                         </p>
-                        <p>Ready to start?</p>
+                        {/* <p>Ready to start?</p>
                         <a className="nav-link" href="/register">
                             Click HERE
-                        </a>
+                        </a> */}
                     </div>
                 </section>
             </div>
