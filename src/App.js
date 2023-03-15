@@ -9,13 +9,14 @@ import Categories from "./components/Header/Categories/Categories";
 import Error from "./components/Error/Error";
 import { AuthContext } from "./contexts/AuthContext";
 import {useState} from 'react'
+import { useLocalStorage } from "./hooks/useLocalStorage";
 // import DrawingDetail from "./components/DrawingDetail/DrawingDetail";
 
 
 /*eslint-disable*/
 function App() {
 
-    const [auth, setAuth] = useState({});
+    const [auth, setAuth] = useLocalStorage('auth',{});
 
     const userLogin = (authData) => {
         setAuth(authData);
