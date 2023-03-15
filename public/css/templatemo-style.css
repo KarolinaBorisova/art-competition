@@ -43,7 +43,7 @@ a:focus,
 .tm-header-container {
 	position: relative;
 	padding-bottom: 6rem;
-	margin-bottom: 5%;
+	margin-bottom: 1%;
 }
 
 @media (max-width: 991px) {

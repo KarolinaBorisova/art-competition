@@ -27,11 +27,6 @@ export default function Header() {
                                         </Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/gallery">
-                                            Gallery
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
                                         <Link className="nav-link" to="/categories">
                                             Age categories
                                         </Link>
