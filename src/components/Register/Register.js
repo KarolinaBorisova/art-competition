@@ -37,20 +37,20 @@ export default function Register() {
         </div>
         <div className="form-content">
           <form onSubmit={onSubmit}>
-            <div class="form-group">
-              <label for="username">Username</label>
+            <div className="form-group">
+              <label htmlFor="username">Username</label>
               <input type="text" id="username" name="username" required="required" />
             </div>
             <div className="form-group">
-              <label for="password">Password</label>
+              <label htmlFor="password">Password</label>
               <input type="password" id="password" name="password" required="required" />
             </div>
             <div className="form-group">
-              <label for="cpassword">Confirm Password</label>
+              <label htmlFor="cpassword">Confirm Password</label>
               <input type="password" id="cpassword" name="cpassword" required="required" />
             </div>
             <div className="form-group">
-              <label for="email">Email Address</label>
+              <label htmlFor="email">Email Address</label>
               <input type="email" id="email" name="email" required="required" />
             </div>
             <div className="form-group">

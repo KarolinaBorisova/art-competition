@@ -31,7 +31,7 @@ export default function Header() {
                                             Age categories
                                         </Link>
                                     </li>
-                                    {user.accessToken
+                                    {user?.accessToken
                                         ? <>
 
                                             <li className="nav-item">
