@@ -1,0 +1,19 @@
+.nav-item.category {
+    border: 2px solid #196d92;
+    border-radius: 25px;
+    margin: 60px 40px;
+    box-shadow: 9px 8px 5px -3px rgba(28, 153, 202, 0.75);
+    background-color: rgb(252, 240, 224);
+    padding: 10px 20px;
+}
+
+.nav.navbar-nav.category {
+    margin-top: 100px;
+    padding: 10px 30px;
+}
+
+.nav-link.years {
+    margin-top: 18px;
+    margin-bottom: 0px;
+    color: rgb(202, 167, 120);
+}
