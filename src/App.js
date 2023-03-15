@@ -4,11 +4,14 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Logout from "./components/Logout/Logout"
 import Create from "./components/Create/Create"
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Categories from "./components/Header/Categories/Categories";
 import Error from "./components/Error/Error";
 import { AuthContext } from "./contexts/AuthContext";
+import { DrawingContext } from "./contexts/DrawingContext";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import { useState } from "react";
+
 // import DrawingDetail from "./components/DrawingDetail/DrawingDetail";
 
 
@@ -16,6 +19,8 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 function App() {
 
     const [auth, setAuth] = useLocalStorage('auth',{});
+    const [drawings, setDrawings] = useState([]);
+    const navigate = useNavigate();
 
     const userLogin = (authData) => {
         setAuth(authData);
@@ -24,10 +29,22 @@ function App() {
         setAuth({});
     }
 
+    const addDrawing = (drawingData) => {
+        setDrawings(state => [
+            ...state,
+            drawingData
+        ]);
+        
+        navigate('/');
+    }
+
+  
     return (
         <AuthContext.Provider value={{user: auth, userLogin, userLogout}}>
             <div className="App tm-bg-img-header">
                 <Header />
+
+                <DrawingContext.Provider value={{drawings, addDrawing}}>
                 <main>
                     <Routes>
                         <Route path="/" element={<Home />} />
@@ -40,6 +57,7 @@ function App() {
                         {/* <Route path="/gallery/:drawingId" element={ <DrawingDetail/>}/> */}
                     </Routes>
                 </main>
+                </DrawingContext.Provider>
             </div>
         </AuthContext.Provider>
     );

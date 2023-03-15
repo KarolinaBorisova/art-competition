@@ -10,30 +10,24 @@ export default function Home() {
     useEffect(() => {
         drawingService.getAll()
             .then(result => {
-            setDrawings(Object.values(result));
+                setDrawings(result);
             });
     }, []);
 
 
     return (
         <>
-        
-                        <h2 className="contest">
-                            We hold this contest to give an opportunity for children to build confidence, learn new things and most important to have fun!
+            <h2 className="contest">
+                We hold this contest to give an opportunity for children to build confidence, learn new things and most important to have fun!
 
-                        </h2>
-                        {/* <p>Ready to start?</p>
-                        <a className="nav-link" href="/register">
-                            Click HERE
-                        </a> */}
-         
+            </h2>
             <h1 className="tm-site-title gallery">Gallery</h1>
             <div className="card-deck">
                 {drawings.length > 0
 
-                ?drawings.map(x=> <Drawing key={x._id} drawing={x}/>)
-                : <h2>No drawings yet</h2>
-                } 
+                    ? drawings.map(x => <Drawing key={x._id} drawing={x} />)
+                    : <h2>No drawings yet</h2>
+                }
             </div>
         </>
     );

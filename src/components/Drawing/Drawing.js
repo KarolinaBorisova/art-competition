@@ -9,12 +9,12 @@ const Drawing = ({
   return (
     <>
       <div className="card-drawing">
-        <img src={drawing.img} className="card-img-top" alt="..." />
+        <img src={drawing.imgUrl} className="card-img-top" alt="..." />
         <div className="card-body">
-          <h5 className="card-title">Name: {drawing.text}</h5>
+          <h5 className="card-title">Name: {drawing.name}</h5>
           <div className="card-link-container">
             <p className="card-category">
-              Category:
+              Category: {drawing.category}
             </p>
             <Link className="deatil-link" to={`/gallery/${drawing._id}`}>Details</Link>
           </div>

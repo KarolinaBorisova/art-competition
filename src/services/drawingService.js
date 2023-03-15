@@ -1,9 +1,11 @@
 import { request } from "./utils/requestService";
 
 
-const baseUrl = 'http://localhost:3030';
+const baseUrl = 'http://localhost:3030/data/drawings';
 
-export const  getAll = () =>  request('GET',`${baseUrl}/jsonstore/data/drawings`);
+export const  getAll = () =>  request('GET',baseUrl);
+
+export const create = (drawingData) => request('POST',baseUrl, drawingData);
 // export const  getById = (drawingId) =>  request('GET',`${baseUrl}/jsonstore/data/drawings/${drawingId}`);
 
 //TODO
