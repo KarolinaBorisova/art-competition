@@ -16,7 +16,7 @@ export default function EditDrawing() {
         .then( drawingData => {
             setCurrentDrawing(drawingData);
         })
-    },[])
+    },[drawingId])
 
     const onSubmit = (e) => {
         e.preventDefault();

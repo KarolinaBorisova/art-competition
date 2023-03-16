@@ -1,25 +1,27 @@
 .card-drawing{
-    border: 2px solid #196d92;
+    
     border-radius: 25px;
     overflow: hidden;
     box-shadow: 11px 9px 5px -3px rgba(28,153,202,0.59);
     background-color: rgb(252, 240, 224);
 }
 
+
 .card-category:hover,
 .deatil-link:hover{
    cursor: pointer;
    border: 1px solid #196d92;
     border-radius: 25px;
-    padding: 5px 10px;
+  
+    /* padding: 5px 10px; */
 }
 
 .card-category,
 .card-title,
 .deatil-link{
     font-size: 25px;
-    padding: 12px 0px;
-    margin: 5px 25px;
+    padding: 12px 10px;
+    margin: 15px 25px;
     
 }
 .card-img-top{
@@ -35,5 +37,5 @@
     justify-content: space-between;
 }
 .card-drawing:hover{
-    transform: scale(1.1);
+    transform: scale(1.2);
 }

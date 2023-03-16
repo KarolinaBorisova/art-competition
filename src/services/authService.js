@@ -20,3 +20,5 @@ try {
 
 export const register = (email, password , username) =>
     request('POST', `${baseUrl}/register`, { email, password, username });
+
+export const  getOwnerById = (ownerId) =>  request('GET',`${baseUrl}/${ownerId}`);
