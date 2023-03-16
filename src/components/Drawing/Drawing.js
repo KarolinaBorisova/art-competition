@@ -1,10 +1,14 @@
 
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useParams } from 'react-router-dom';
 import './Drawing.css'
 
 const Drawing = ({
   drawing
 }) => {
+  const { user } = useContext(AuthContext);
 
   return (
     <>
@@ -16,7 +20,13 @@ const Drawing = ({
             <p className="card-category">
               Category: {drawing.category}
             </p>
-            <Link className="deatil-link" to={`/gallery/${drawing._id}`}>Details</Link>
+            {drawing._ownerId == user._id
+              ? <> <Link className="deatil-link" to={`/drawings/${drawing._id}/edit`}>Edit</Link>
+                <Link className="deatil-link" to={`/gallery/${drawing._id}`}>Delete</Link>
+                </>
+              : <Link className="deatil-link" to={`/gallery/${drawing._id}`}>Details</Link>}
+
+
           </div>
 
         </div>

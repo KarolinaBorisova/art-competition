@@ -11,6 +11,7 @@ import { AuthContext } from "./contexts/AuthContext";
 import { DrawingContext } from "./contexts/DrawingContext";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useState } from "react";
+import EditDrawing from "./components/EditDrawing/EditDrawing";
 
 // import DrawingDetail from "./components/DrawingDetail/DrawingDetail";
 
@@ -51,6 +52,7 @@ function App() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/create" element={<Create />} />
+                        <Route path="/drawings/:drawingId/edit" element={<EditDrawing/>} />
                         <Route path="/categories" element={<Categories />} />
                         <Route path="/error" element={<Error />} />
                         <Route path="/logout" element={<Logout/>} />
