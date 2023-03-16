@@ -34,4 +34,6 @@
     display: flex;
     justify-content: space-between;
 }
-
+.card-drawing:hover{
+    transform: scale(1.1);
+}

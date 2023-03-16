@@ -12,6 +12,7 @@ import { DrawingContext } from "./contexts/DrawingContext";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useState } from "react";
 import EditDrawing from "./components/EditDrawing/EditDrawing";
+import DetailDrawing from "./components/DetailDrawing/DetailDrawing"
 
 // import DrawingDetail from "./components/DrawingDetail/DrawingDetail";
 
@@ -56,7 +57,7 @@ function App() {
                         <Route path="/categories" element={<Categories />} />
                         <Route path="/error" element={<Error />} />
                         <Route path="/logout" element={<Logout/>} />
-                        {/* <Route path="/gallery/:drawingId" element={ <DrawingDetail/>}/> */}
+                        <Route path="/gallery/:drawingId" element={ <DetailDrawing/>}/>
                     </Routes>
                 </main>
                 </DrawingContext.Provider>

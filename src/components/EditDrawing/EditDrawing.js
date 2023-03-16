@@ -26,7 +26,7 @@ export default function EditDrawing() {
         drawingService.edit(drawingId, drawingData)
         .then(result => {
             console.log(result);
-            navigate('/')
+            navigate(`/gallery/${result._id}`)
         })
 
     }
@@ -35,7 +35,7 @@ export default function EditDrawing() {
     <div className="form-toggle" />
     <div className="form-panel one">
         <div className="form-header">
-            <h1>Add drawing</h1>
+            <h1>Edit drawing</h1>
         </div>
         <div className="form-content">
             <form onSubmit = { onSubmit }>

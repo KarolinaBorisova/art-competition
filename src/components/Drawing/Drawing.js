@@ -12,19 +12,25 @@ const Drawing = ({
 
   return (
     <>
+      
       <div className="card-drawing">
-        <img src={drawing.imgUrl} className="card-img-top" alt="..." />
+      <Link className="" to={`/gallery/${drawing._id}`}>
+      <img src={drawing.imgUrl} className="card-img-top" alt="..." />
+                </Link>
         <div className="card-body">
           <h5 className="card-title">Name: {drawing.name}</h5>
           <div className="card-link-container">
             <p className="card-category">
               Category: {drawing.category}
             </p>
-            {drawing._ownerId == user._id
-              ? <> <Link className="deatil-link" to={`/drawings/${drawing._id}/edit`}>Edit</Link>
-                <Link className="deatil-link" to={`/gallery/${drawing._id}`}>Delete</Link>
+            {drawing._ownerId !== user._id
+              ? <> 
+              {/* <Link className="deatil-link" to={`/drawings/${drawing._id}/edit`}>Edit</Link>
+               <Link className="deatil-link" to={`/gallery/${drawing._id}`}>Delete</Link> */}
+                <p className="card-category">Vote</p>
                 </>
-              : <Link className="deatil-link" to={`/gallery/${drawing._id}`}>Details</Link>}
+              : null}
+          
 
 
           </div>
