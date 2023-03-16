@@ -18,7 +18,7 @@ export const request = async (method, url, data) => {
             buildRequest =  fetch(url, {headers});
 
         }
-        else {
+        else  {
             buildRequest =  fetch(url,{
                 method,
                 headers: {
@@ -27,7 +27,7 @@ export const request = async (method, url, data) => {
                     
                 },
                 body: JSON.stringify(data)
-            })
+            });
         }
         const response = await buildRequest;
 

@@ -15,6 +15,7 @@ import EditDrawing from "./components/EditDrawing/EditDrawing";
 import DetailDrawing from "./components/DetailDrawing/DetailDrawing"
 
 
+
 // import DrawingDetail from "./components/DrawingDetail/DrawingDetail";
 
 
@@ -59,6 +60,7 @@ function App() {
                         <Route path="/error" element={<Error />} />
                         <Route path="/logout" element={<Logout/>} />
                         <Route path="/gallery/:drawingId" element={ <DetailDrawing/>}/>
+                        
                     </Routes>
                 </main>
                 </DrawingContext.Provider>

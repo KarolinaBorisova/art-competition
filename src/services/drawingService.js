@@ -9,6 +9,8 @@ export const create = (drawingData) => request('POST',baseUrl, drawingData);
 
 export const edit = (drawingId, drawingData) => request('PUT',`${baseUrl}/${drawingId}`, drawingData);
 
+export const  del = (drawingId) =>  request('DELETE',`${baseUrl}/${drawingId}`);
+
 export const  getOneById = (drawingId) =>  request('GET',`${baseUrl}/${drawingId}`);
 
 //TODO

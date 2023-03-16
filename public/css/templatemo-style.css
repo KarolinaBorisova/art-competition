@@ -17,7 +17,8 @@ body {
 	background-repeat: no-repeat;
 	background-position: center top;
 	background-size:cover;
-	min-height: 1080px;
+	min-height: 1200px;
+
 }
 
 .tm-bg-img-content {
@@ -36,7 +37,7 @@ a:focus,
 	outline: none;
 }
 
-.container { max-width: 1040px; }
+.container { max-width: 1800px; }
 
 /* Sticky header 
 --------------------------*/
