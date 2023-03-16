@@ -12,8 +12,10 @@ export default function Home() {
             .then(result => {
                 setDrawings(result);
             });
+         
     }, []);
 
+   
 
     return (
         <>

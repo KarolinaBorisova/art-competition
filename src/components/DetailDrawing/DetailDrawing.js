@@ -29,7 +29,6 @@ export default function DrawingDetail() {
             if (confirmation) {
                 drawingService.del(drawingId)
                     .then((res) => {
-                        // movieRemove(movieId);
                         console.log(res);
                         navigate('/');
                     })

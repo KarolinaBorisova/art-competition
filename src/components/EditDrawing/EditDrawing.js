@@ -60,15 +60,15 @@ export default function EditDrawing() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="category">Category</label>
-                    <input
-                        type="text"
-                        required="required"
-                        name="category"
-                        placeholder="category"
-                        defaultValue={currentDrawing.category}
-                    />
-                </div>
+                            <label htmlFor="category">Category</label>
+                            <select  name ="category" required="required"  >
+                            <option value="" disabled selected>Select category</option>
+                                <option value="I group">I group (3-4 years)</option>
+                                <option value="II group">II group (4-5 years)</option>
+                                <option value="III group">III group (5-6 years)</option>
+                                <option value="IV group">IV group (6-7 years)</option>
+                            </select>
+                        </div>
                 <div className="form-group">
                     <label htmlFor="imgUrl">Image URL</label>
                     <input

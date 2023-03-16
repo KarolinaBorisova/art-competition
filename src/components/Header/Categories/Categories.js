@@ -8,26 +8,26 @@ export default function Categories() {
             <div className="text-xs-center tm-navbar-rounded" id="tmNavbar">
                 <ul className="nav navbar-nav category">
                     <li className="nav-item category">
-                        <Link className="nav-link" to="/gallery">
+                        <Link className="nav-link" to="/category/Igroup">
                             I group
                             <p className="nav-link years">3 - 4 years</p>
                         </Link>
 
                     </li>
                     <li className="nav-item category">
-                        <Link className="nav-link" to="/IIgroup">
+                        <Link className="nav-link" to="/category/IIgroup">
                             II group
                             <p className="nav-link years">4 - 5 years</p>
                         </Link>
                     </li>
                     <li className="nav-item category">
-                        <Link className="nav-link" to="/IIIgroup">
+                        <Link className="nav-link" to="/category/IIIgroup">
                             III group
                             <p className="nav-link years">5 - 6 years</p>
                         </Link>
                     </li>
                     <li className="nav-item category">
-                        <Link className="nav-link" to="/IVgroup">
+                        <Link className="nav-link" to="/category/IVgroup">
                             IV group
                             <p className="nav-link years">6 - 7 years</p>
                         </Link>

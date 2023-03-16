@@ -1,5 +1,5 @@
 import * as drawingService from '../../services/drawingService';
-import { useContext } from 'react'; 
+import { useContext } from 'react';
 
 import { DrawingContext } from '../../contexts/DrawingContext';
 
@@ -15,10 +15,10 @@ export default function Create() {
         const drawingData = Object.fromEntries(new FormData(e.target));
 
         drawingService.create(drawingData)
-        .then(result => {
-            addDrawing(result);
-            console.log(result);
-        })
+            .then(result => {
+                addDrawing(result);
+                console.log(result);
+            })
 
     }
     return (
@@ -29,7 +29,7 @@ export default function Create() {
                     <h1>Add drawing</h1>
                 </div>
                 <div className="form-content">
-                    <form onSubmit = { onSubmit }>
+                    <form onSubmit={onSubmit}>
                         <div className="form-group">
                             <label htmlFor="name">Name</label>
                             <input
@@ -50,12 +50,13 @@ export default function Create() {
                         </div>
                         <div className="form-group">
                             <label htmlFor="category">Category</label>
-                            <input
-                                type="text"
-                                required="required"
-                                name="category"
-                                placeholder="category"
-                            />
+                            <select  name ="category" required="required" placeholder="Title">
+                            <option value="" disabled selected>Select category</option>
+                                <option value="I group">I group (3-4 years)</option>
+                                <option value="II group">II group (4-5 years)</option>
+                                <option value="III group">III group (5-6 years)</option>
+                                <option value="IV group">IV group (6-7 years)</option>
+                            </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="imgUrl">Image URL</label>

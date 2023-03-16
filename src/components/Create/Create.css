@@ -105,6 +105,7 @@ html {
   .two .form-group label {
     color: #FFFFFF;
   }
+  .form-group select,
   .form-group input {
     outline: none;
     display: block;
@@ -122,6 +123,7 @@ html {
     -webkit-transition: 0.3s ease;
     transition: 0.3s ease;
   }
+
   .form-group input:focus {
     color: rgba(0, 0, 0, 0.8);
   }

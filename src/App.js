@@ -13,6 +13,10 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useState } from "react";
 import EditDrawing from "./components/EditDrawing/EditDrawing";
 import DetailDrawing from "./components/DetailDrawing/DetailDrawing"
+import Igroup from "./components/Groups/Igroup";
+import IIgroup from "./components/Groups/IIgroup";
+import IIIgroup from "./components/Groups/IIIgroup";
+import IVgroup from "./components/Groups/IVgroup";
 
 
 
@@ -60,6 +64,10 @@ function App() {
                         <Route path="/error" element={<Error />} />
                         <Route path="/logout" element={<Logout/>} />
                         <Route path="/gallery/:drawingId" element={ <DetailDrawing/>}/>
+                        <Route path="/category/Igroup" element={<Igroup/>} />
+                        <Route path="/category/IIgroup" element={<IIgroup/>} />
+                        <Route path="/category/IIIgroup" element={<IIIgroup/>} />
+                        <Route path="/category/IVgroup" element={<IVgroup/>} />
                         
                     </Routes>
                 </main>
