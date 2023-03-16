@@ -36,6 +36,8 @@ export default function DrawingDetail() {
         }
 
 
+        //TODO category path
+
     return (
 
         <div className="card-drawing detail">
@@ -46,7 +48,7 @@ export default function DrawingDetail() {
                 <div className="card-text">
                     Author: {currentDrawing.name}
                 </div> 
-                <Link className="deatil-link category" to={`/gallery/${currentDrawing._id}`}>{currentDrawing.category}</Link>
+                <Link className="deatil-link category" to={`/category/${currentDrawing.category}`}>{currentDrawing.category}</Link>
                 </div>
                 <div className="card-title container">
                 <div className="card-text">

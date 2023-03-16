@@ -20,14 +20,14 @@ const Drawing = ({
         <div className="card-body">
           <h5 className="card-title">Name: {drawing.name}</h5>
           <div className="card-link-container">
-            <p className="card-category">
+            <Link className="card-category" to={`/category/${drawing.category.replace(/\s+/g, '')}`}>
               Category: {drawing.category}
-            </p>
+            </Link>
             {drawing._ownerId !== user._id
               ? <> 
               {/* <Link className="deatil-link" to={`/drawings/${drawing._id}/edit`}>Edit</Link>
                <Link className="deatil-link" to={`/gallery/${drawing._id}`}>Delete</Link> */}
-                <p className="card-category">Vote</p>
+                {/* <p className="card-category">Vote</p> */}
                 </>
               : null}
           
