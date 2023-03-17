@@ -36,7 +36,11 @@ export default function DrawingDetail() {
         }
 
 
-        //TODO category path
+        const goToCategory = (e) => {
+   
+            var path = e.currentTarget.value;
+            navigate(`/category/${path.replace(/\s+/g, '')}`)
+        }
 
     return (
 
@@ -48,7 +52,7 @@ export default function DrawingDetail() {
                 <div className="card-text">
                     Author: {currentDrawing.name}
                 </div> 
-                <Link className="deatil-link category" to={`/category/${currentDrawing.category}`}>{currentDrawing.category}</Link>
+                <button className="deatil-link category" value={currentDrawing.category} onClick={goToCategory} >{currentDrawing.category}</button>
                 </div>
                 <div className="card-title container">
                 <div className="card-text">
@@ -58,11 +62,7 @@ export default function DrawingDetail() {
                 ? <div className="deatil-link category">Vote</div>
                 : null}
                 </div>
-
-            </div>
-
-           
-
+            </div> 
             {currentDrawing._ownerId == user._id
                 ? <div className="card-title container">
                      <Link className="deatil-link category" to={`/drawings/${currentDrawing._id}/edit`}>Edit</Link>

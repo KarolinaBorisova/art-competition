@@ -3,17 +3,22 @@ import './Categories.css';
 
 export default function Categories() {
 
-    
+    const goToCategory = (e) => {
+   
+        var path = e.currentTarget.value;
+        console.log(path);
+    }
+
 
     return (
         <nav className="navbar navbar-full">
             <div className="text-xs-center tm-navbar-rounded" id="tmNavbar">
                 <ul className="nav navbar-nav category">
                     <li className="nav-item category">
-                        <Link className="nav-link" to="/category/Igroup">
+                        <button className="nav-link" value="Igroup" onClick={goToCategory}>
                             I group
                             <p className="nav-link years">3 - 4 years</p>
-                        </Link>
+                        </button>
 
                     </li>
                     <li className="nav-item category">
