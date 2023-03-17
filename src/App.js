@@ -63,7 +63,7 @@ function App() {
                   
                         <Route path="/categories" element={<Categories />} />
                         <Route path="/error" element={<Error />} />
-                        <Route path="/gallery/:drawingId" element={ <DetailDrawing/>}/>
+                        <Route path="/drawings/:drawingId" element={ <DetailDrawing/>}/>
                         <Route path="/category/Igroup" element={<Igroup/>} />
                         <Route path="/category/IIgroup" element={<IIgroup/>} />
                         <Route path="/category/IIIgroup" element={<IIIgroup/>} />

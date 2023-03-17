@@ -26,7 +26,7 @@ export default function EditDrawing() {
         drawingService.edit(drawingId, drawingData)
         .then(result => {
             console.log(result);
-            navigate(`/gallery/${result._id}`)
+            navigate(`/drawings/${result._id}`)
         })
 
     }

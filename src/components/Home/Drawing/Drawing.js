@@ -18,7 +18,7 @@ const Drawing = ({
     <>
       
       <div className={`card-drawing some ${selected}`}>
-      <Link className="" to={`/gallery/${drawing._id}`}>
+      <Link className="" to={`/drawings/${drawing._id}`}>
       <img src={drawing.imgUrl} className="card-img-top" alt="..." />
                 </Link>
         <div className="card-body">

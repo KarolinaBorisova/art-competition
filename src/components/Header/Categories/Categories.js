@@ -3,6 +3,8 @@ import './Categories.css';
 
 export default function Categories() {
 
+    
+
     return (
         <nav className="navbar navbar-full">
             <div className="text-xs-center tm-navbar-rounded" id="tmNavbar">
