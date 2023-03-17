@@ -17,7 +17,8 @@ import Igroup from "./components/Groups/Igroup";
 import IIgroup from "./components/Groups/IIgroup";
 import IIIgroup from "./components/Groups/IIIgroup";
 import IVgroup from "./components/Groups/IVgroup";
-import PrivateRoute from "./components/common/PrivateRoute";
+import RouteAuthenticated from "./components/common/RouteAuthenticated";
+import RouteNotAuthenticated from "./components/common/RouteNotAuthenticated";
 
 
 
@@ -57,19 +58,21 @@ function App() {
                 <main>
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
+                        
                        
                   
                         <Route path="/categories" element={<Categories />} />
                         <Route path="/error" element={<Error />} />
-                        
                         <Route path="/gallery/:drawingId" element={ <DetailDrawing/>}/>
                         <Route path="/category/Igroup" element={<Igroup/>} />
                         <Route path="/category/IIgroup" element={<IIgroup/>} />
                         <Route path="/category/IIIgroup" element={<IIIgroup/>} />
                         <Route path="/category/IVgroup" element={<IVgroup/>} />
-                        <Route element={<PrivateRoute/>}>
+                        <Route element={<RouteNotAuthenticated/>}>
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                        </Route>
+                        <Route element={<RouteAuthenticated/>}>
                             <Route path="/create" element={<Create />} />
                             <Route path="/drawings/:drawingId/edit" element={<EditDrawing/>} />
                             <Route path="/logout" element={<Logout/>} />
