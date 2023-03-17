@@ -1,8 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
-import { useParams } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthContext';
 import './Drawing.css'
 
 const Drawing = ({
@@ -23,7 +22,8 @@ const Drawing = ({
       <img src={drawing.imgUrl} className="card-img-top" alt="..." />
                 </Link>
         <div className="card-body">
-          <h5 className="card-title">Name: {drawing.name}</h5>
+          <h5 className="card-title">{drawing.name}</h5>
+          <h5 className="card-title">{drawing.age} years</h5>
           <div className="card-link-container">
             <Link className="card-category" to={`/category/${drawing.category.replace(/\s+/g, '')}`}>
               {drawing.category}

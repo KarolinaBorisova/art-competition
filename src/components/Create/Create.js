@@ -40,6 +40,17 @@ export default function Create() {
                             />
                         </div>
                         <div className="form-group">
+                            <label htmlFor="age">Age</label>
+                            <input
+                                type="number"
+                                required="required"
+                                name="age"
+                                min="3" 
+                                max="7"
+                       
+                            />
+                        </div>
+                        <div className="form-group">
                             <label htmlFor="title">Drawing title</label>
                             <input
                                 type="text"

@@ -23,13 +23,14 @@
 .card-title,
 .deatil-link{
     font-size: 25px;
-    padding: 12px 10px;
-    margin: 15px 25px;
+    padding: 5px 10px;
+    margin: 5px 25px;
     cursor: pointer;  
 }
 .card-category{
     border: 1px solid #196d92;
     border-radius: 25px;
+    margin-bottom: 10px;
 }
 .card-img-top{
     border-bottom:2px solid #196d92 ;

@@ -2,7 +2,7 @@ import { useState , useEffect} from "react";
 import { useParams} from "react-router-dom";
 import { sortCategory } from "../../hooks/sortCategory";
 import * as drawingService from '../../services/drawingService';
-import Drawing from "../Drawing/Drawing";
+import DrawingGroupItem from "./DrawingGroupItem/DrawingGroupItem";
 
 export default function Igroup() {
 
@@ -26,7 +26,7 @@ export default function Igroup() {
              <div className="card-deck">
                  {drawings.length > 0
 
-                ? drawings.map(x => <Drawing key={x._id} drawing={x} />)
+                ? drawings.map(x => <DrawingGroupItem key={x._id} drawing={x} />)
                 : <h2>No drawings yet</h2>
                  }
             </div>

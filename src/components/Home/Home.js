@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Home.css';
 import * as drawingService from '../../services/drawingService';
-import Drawing from '../Drawing/Drawing';
+import Drawing from './Drawing/Drawing';
 
 
 export default function Home() {
