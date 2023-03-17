@@ -22,7 +22,7 @@ export default function IIIgroup() {
     console.log(drawings);
 
     return <>
-             <h1 className="tm-site-title gallery">Gallery</h1>
+             <h1 className="tm-site-title gallery">III Group</h1>
              <div className="card-deck">
                  {drawings.length > 0
 

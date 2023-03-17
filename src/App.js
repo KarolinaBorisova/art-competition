@@ -17,6 +17,7 @@ import Igroup from "./components/Groups/Igroup";
 import IIgroup from "./components/Groups/IIgroup";
 import IIIgroup from "./components/Groups/IIIgroup";
 import IVgroup from "./components/Groups/IVgroup";
+import PrivateRoute from "./components/common/PrivateRoute";
 
 
 
@@ -48,7 +49,7 @@ function App() {
 
   
     return (
-        <AuthContext.Provider value={{user: auth, userLogin, userLogout}}>
+        <AuthContext.Provider value={{user: auth, userLogin, userLogout, isAuthenticated: Boolean(auth.accessToken)}}>
             <div className="App tm-bg-img-header">
                 <Header />
 
@@ -58,16 +59,21 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
-                        <Route path="/create" element={<Create />} />
-                        <Route path="/drawings/:drawingId/edit" element={<EditDrawing/>} />
+                       
+                  
                         <Route path="/categories" element={<Categories />} />
                         <Route path="/error" element={<Error />} />
-                        <Route path="/logout" element={<Logout/>} />
+                        
                         <Route path="/gallery/:drawingId" element={ <DetailDrawing/>}/>
                         <Route path="/category/Igroup" element={<Igroup/>} />
                         <Route path="/category/IIgroup" element={<IIgroup/>} />
                         <Route path="/category/IIIgroup" element={<IIIgroup/>} />
                         <Route path="/category/IVgroup" element={<IVgroup/>} />
+                        <Route element={<PrivateRoute/>}>
+                            <Route path="/create" element={<Create />} />
+                            <Route path="/drawings/:drawingId/edit" element={<EditDrawing/>} />
+                            <Route path="/logout" element={<Logout/>} />
+                        </Route>
                         
                     </Routes>
                 </main>

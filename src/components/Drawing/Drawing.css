@@ -5,13 +5,16 @@
     box-shadow: 11px 9px 5px -3px rgba(28,153,202,0.59);
     background-color: rgb(252, 240, 224);
 }
+.card-drawing.some.selected{
+    border: 10px solid rgb(255, 238, 0) ;
+}
+
 
 
 .card-category:hover,
 .deatil-link:hover{
-   cursor: pointer;
-   border: 1px solid #196d92;
-    border-radius: 25px;
+    transform: scale(1.1);
+  
   
     /* padding: 5px 10px; */
 }
@@ -22,7 +25,11 @@
     font-size: 25px;
     padding: 12px 10px;
     margin: 15px 25px;
-    
+    cursor: pointer;  
+}
+.card-category{
+    border: 1px solid #196d92;
+    border-radius: 25px;
 }
 .card-img-top{
     border-bottom:2px solid #196d92 ;
@@ -36,6 +43,6 @@
     display: flex;
     justify-content: space-between;
 }
-.card-drawing:hover{
-    transform: scale(1.2);
+.card-drawing.some:hover{
+    transform: scale(1.1);
 }

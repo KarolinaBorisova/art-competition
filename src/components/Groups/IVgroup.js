@@ -22,7 +22,7 @@ export default function IVgroup() {
     console.log(drawings);
 
     return <>
-             <h1 className="tm-site-title gallery">Gallery</h1>
+             <h1 className="tm-site-title gallery">IV Group</h1>
              <div className="card-deck">
                  {drawings.length > 0
 

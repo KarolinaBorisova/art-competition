@@ -10,10 +10,15 @@ const Drawing = ({
 }) => {
   const { user } = useContext(AuthContext);
 
+  let selected = "";
+
+  if(drawing._ownerId === user._id){
+    selected = "selected"
+  }
   return (
     <>
       
-      <div className="card-drawing">
+      <div className={`card-drawing some ${selected}`}>
       <Link className="" to={`/gallery/${drawing._id}`}>
       <img src={drawing.imgUrl} className="card-img-top" alt="..." />
                 </Link>
@@ -21,7 +26,7 @@ const Drawing = ({
           <h5 className="card-title">Name: {drawing.name}</h5>
           <div className="card-link-container">
             <Link className="card-category" to={`/category/${drawing.category.replace(/\s+/g, '')}`}>
-              Category: {drawing.category}
+              {drawing.category}
             </Link>
             {drawing._ownerId !== user._id
               ? <> 
