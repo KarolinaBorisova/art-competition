@@ -4,25 +4,28 @@ import { sortCategory } from "../../hooks/sortCategory";
 import * as drawingService from '../../services/drawingService';
 import DrawingGroupItem from "./DrawingGroupItem/DrawingGroupItem";
 
-export default function IIgroup() {
+export default function Group() {
 
     const [drawings, setDrawings] = useState([]);
-    // const { Igroup }= useParams();
+    const { group }= useParams();
 
     useEffect(() => {
         drawingService.getAll()
             .then(result => {
-                const drawings = sortCategory(result, "II group" )
-                setDrawings(drawings);
+                console.log(result);
+                console.log(group);
+                const newDrawing = sortCategory(result, group)
+                setDrawings(newDrawing);
+                console.log(drawings);
             });
            
            
            
     }, []);
-    console.log(drawings);
+   
 
     return <>
-             <h1 className="tm-site-title gallery">II Group</h1>
+             <h1 className="tm-site-title gallery">{group}</h1>
              <div className="card-deck">
                  {drawings.length > 0
 

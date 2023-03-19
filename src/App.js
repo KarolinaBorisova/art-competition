@@ -13,12 +13,9 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useState } from "react";
 import EditDrawing from "./components/EditDrawing/EditDrawing";
 import DetailDrawing from "./components/DetailDrawing/DetailDrawing"
-import Igroup from "./components/Groups/Igroup";
-import IIgroup from "./components/Groups/IIgroup";
-import IIIgroup from "./components/Groups/IIIgroup";
-import IVgroup from "./components/Groups/IVgroup";
 import RouteAuthenticated from "./components/common/RouteAuthenticated";
 import RouteNotAuthenticated from "./components/common/RouteNotAuthenticated";
+import Group from "./components/Groups/Group";
 
 
 
@@ -64,10 +61,10 @@ function App() {
                         <Route path="/categories" element={<Categories />} />
                         <Route path="/error" element={<Error />} />
                         <Route path="/drawings/:drawingId" element={ <DetailDrawing/>}/>
-                        <Route path="/category/Igroup" element={<Igroup/>} />
-                        <Route path="/category/IIgroup" element={<IIgroup/>} />
-                        <Route path="/category/IIIgroup" element={<IIIgroup/>} />
-                        <Route path="/category/IVgroup" element={<IVgroup/>} />
+                        <Route path="/category/:group" element={<Group/>} />
+                        {/* <Route path="/category/:group" element={<IIgroup/>} />
+                        <Route path="/category/:group" element={<IIIgroup/>} />
+                        <Route path="/category/:group" element={<IVgroup/>} /> */}
                         <Route element={<RouteNotAuthenticated/>}>
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />
