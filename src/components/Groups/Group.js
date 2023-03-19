@@ -12,16 +12,14 @@ export default function Group() {
     useEffect(() => {
         drawingService.getAll()
             .then(result => {
-                console.log(result);
-                console.log(group);
                 const newDrawing = sortCategory(result, group)
                 setDrawings(newDrawing);
-                console.log(drawings);
+
             });
            
            
            
-    }, []);
+    }, [group]);
    
 
     return <>

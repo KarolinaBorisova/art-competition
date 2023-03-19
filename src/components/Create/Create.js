@@ -84,6 +84,7 @@ export default function Create() {
                                 name="add"
                             />
                         </div>
+                        <input type="hidden" id="custId" name="votes" value="0"/>
                         <div className="form-group">
                             <button type="submit">Add</button>
                         </div>

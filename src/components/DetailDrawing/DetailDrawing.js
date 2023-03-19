@@ -56,7 +56,7 @@ export default function DrawingDetail() {
                 </div>
                 <div className="card-title container">
                 <div className="card-text">
-                    Votes: 5
+                    Votes: {currentDrawing.votes}
                 </div> 
                 {currentDrawing._ownerId !== user._id
                 ? <div className="deatil-link category">Vote</div>
