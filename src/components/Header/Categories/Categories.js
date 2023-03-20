@@ -15,7 +15,7 @@ export default function Categories() {
             <div className="text-xs-center tm-navbar-rounded" id="tmNavbar">
                 <ul className="nav navbar-nav category">
                     <li className="nav-item category">
-                        <button className="nav-link" value="Igroup" onClick={goToCategory}>
+                        <Link className="nav-link" to="/category/Igroup">
                             I group
                             <p className="nav-link years">3 - 4 years</p>
                         </button>
