@@ -12,7 +12,8 @@ import './DetailDrawing.css'
 export default function DrawingDetail() {
     const { user } = useContext(AuthContext);
     const [currentDrawing, setCurrentDrawing] = useState({});
-    const [votes, setVotes] = useState(0);
+    const [vote, setVote] = useState({});
+    const [isActive, setIsActive] = useState(false);
     const { drawingId } = useParams();
     const navigate = useNavigate();
 
@@ -25,31 +26,50 @@ export default function DrawingDetail() {
             });
     }, []);
 
-    
-        const deleteDrawing = () => {
-            const confirmation = window.confirm('Are you sure you want to delete this drawing?');
-    
-            if (confirmation) {
-                drawingService.del(drawingId)
-                    .then((res) => {
-                        console.log(res);
-                        navigate('/');
-                    })
-            }
+
+    const deleteDrawing = () => {
+        const confirmation = window.confirm('Are you sure you want to delete this drawing?');
+
+        if (confirmation) {
+            drawingService.del(drawingId)
+                .then((res) => {
+                    console.log(res);
+                    navigate('/');
+                })
+        }
+    }
+
+
+
+    const goToCategory = (e) => {
+        var path = e.currentTarget.value;
+        navigate(`/category/${path.replace(/\s+/g, '')}`)
+    }
+
+    let selected = "";
+
+    const handleClick = () => {
+        // 👇️ toggle
+        setIsActive(current => !current);
+    }
+
+    const voteHandler = (e) => {
+
+        if(!isActive){
+            voteService.addVote(drawingId)
+            .then(result =>{
+                setVote(result);
+            } );
+            
+        }
+        else{
+            voteService.del(vote._id);
+           setVote({});
         }
 
+        handleClick();
       
-
-        const goToCategory = (e) => {
-            var path = e.currentTarget.value;
-            navigate(`/category/${path.replace(/\s+/g, '')}`)
-        }
-
-        const voteHandler = (e) => {
-
-            voteService.addVote(drawingId);
-             setVotes( oldVotes => oldVotes + 1 );
-        }
+    }
 
     return (
 
@@ -58,25 +78,30 @@ export default function DrawingDetail() {
             <img src={currentDrawing.imgUrl} className="card-img-top detail" alt="..." />
             <div className="card-body">
                 <div className="card-title container">
-                <div className="card-text">
-                    Author: {currentDrawing.name}
-                </div> 
-                <button className="deatil-link category" value={currentDrawing.category} onClick={goToCategory} >{currentDrawing.category}</button>
+                    <div className="card-text">
+                        Author: {currentDrawing.name}
+                    </div>
+                    <button className="deatil-link category" value={currentDrawing.category} onClick={goToCategory} >{currentDrawing.category}</button>
                 </div>
                 <div className="card-title container">
-                <div className="card-text">
-                    Votes: {currentDrawing.votes}
-                </div> 
-                {currentDrawing._ownerId !== user._id
-                ? <button className="deatil-link category" onClick={voteHandler}>Vote</button>
-                : null}
+                    <div className="card-text">
+                        Votes: 0
+                    </div>
+                    {currentDrawing._ownerId !== user._id
+                        ? <button className="deatil-link category"
+                                 style={{
+                                         backgroundColor: isActive ? '#196d92' : '',
+                                         color: isActive ? 'white' : '',
+                                        }}
+                                 onClick={voteHandler}>Vote</button>
+                        : null}
                 </div>
-            </div> 
+            </div>
             {currentDrawing._ownerId == user._id
                 ? <div className="card-title container">
-                     <Link className="deatil-link category" to={`/drawings/${currentDrawing._id}/edit`}>Edit</Link>
-                     <button  className="deatil-link category" onClick={deleteDrawing} >Delete</button>
-                    </div>
+                    <Link className="deatil-link category" to={`/drawings/${currentDrawing._id}/edit`}>Edit</Link>
+                    <button className="deatil-link category" onClick={deleteDrawing} >Delete</button>
+                </div>
                 : null}
         </div>
 

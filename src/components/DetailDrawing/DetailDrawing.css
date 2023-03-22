@@ -37,6 +37,7 @@
     background-color: rgb(252, 240, 224);
     margin: unset;
 }
+
 .card-title.container .deatil-link.category:hover{
  transform: scale(1.2);
 }
