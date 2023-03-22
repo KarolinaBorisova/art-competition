@@ -13,17 +13,19 @@ export default function DrawingDetail() {
     const { user } = useContext(AuthContext);
     const [currentDrawing, setCurrentDrawing] = useState({});
     const [vote, setVote] = useState({});
+    const [votes, setVotes] = useState([]);
     const [isActive, setIsActive] = useState(false);
     const { drawingId } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
-        drawingService.getOneById(drawingId)
-            .then(result => {
-                setCurrentDrawing(result);
-                console.log(result);
-                console.log(user);
-            });
+        (async () => {
+            const drawing = await drawingService.getOneById(drawingId);
+            setCurrentDrawing(drawing)
+            const drawingVotes = await voteService.getByDrawingId(drawingId);
+            setVotes(drawingVotes);
+            console.log(votes.length);
+        })();   
     }, []);
 
 
@@ -46,29 +48,31 @@ export default function DrawingDetail() {
         navigate(`/category/${path.replace(/\s+/g, '')}`)
     }
 
-    let selected = "";
 
     const handleClick = () => {
-        // 👇️ toggle
         setIsActive(current => !current);
     }
 
+    const alreadyVoted = votes?.some(v => v._ownerId === user._id);
+   
     const voteHandler = (e) => {
-
-        if(!isActive){
+        if(!alreadyVoted ){
             voteService.addVote(drawingId)
             .then(result =>{
                 setVote(result);
-            } );
-            
+                setVotes(oldVotes => [...oldVotes,result])
+            });      
+
+            setIsActive(false);
         }
         else{
             voteService.del(vote._id);
            setVote({});
+           setVotes(oldVotes => [...oldVotes.filter(v=>v._id!== vote._id)]);
+           setIsActive(true);
         }
 
-        handleClick();
-      
+        handleClick();   
     }
 
     return (
@@ -85,7 +89,7 @@ export default function DrawingDetail() {
                 </div>
                 <div className="card-title container">
                     <div className="card-text">
-                        Votes: 0
+                        Votes: {votes.length}
                     </div>
                     {currentDrawing._ownerId !== user._id
                         ? <button className="deatil-link category"
