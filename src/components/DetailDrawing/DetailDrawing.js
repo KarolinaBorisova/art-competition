@@ -3,13 +3,16 @@ import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+
 import * as drawingService from '../../services/drawingService';
+import * as voteService from '../../services/voteService';
 import './DetailDrawing.css'
 
 
 export default function DrawingDetail() {
     const { user } = useContext(AuthContext);
     const [currentDrawing, setCurrentDrawing] = useState({});
+    const [votes, setVotes] = useState(0);
     const { drawingId } = useParams();
     const navigate = useNavigate();
 
@@ -35,11 +38,17 @@ export default function DrawingDetail() {
             }
         }
 
+      
 
         const goToCategory = (e) => {
-   
             var path = e.currentTarget.value;
             navigate(`/category/${path.replace(/\s+/g, '')}`)
+        }
+
+        const voteHandler = (e) => {
+
+            voteService.addVote(drawingId);
+             setVotes( oldVotes => oldVotes + 1 );
         }
 
     return (
@@ -59,7 +68,7 @@ export default function DrawingDetail() {
                     Votes: {currentDrawing.votes}
                 </div> 
                 {currentDrawing._ownerId !== user._id
-                ? <div className="deatil-link category">Vote</div>
+                ? <button className="deatil-link category" onClick={voteHandler}>Vote</button>
                 : null}
                 </div>
             </div> 

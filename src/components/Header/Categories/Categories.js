@@ -1,14 +1,9 @@
 import { Link } from "react-router-dom"
+
 import './Categories.css';
 
 export default function Categories() {
-
-    const goToCategory = (e) => {
    
-        var path = e.currentTarget.value;
-        console.log(path);
-    }
-
 
     return (
         <nav className="navbar navbar-full">
@@ -18,7 +13,7 @@ export default function Categories() {
                         <Link className="nav-link" to="/category/Igroup">
                             I group
                             <p className="nav-link years">3 - 4 years</p>
-                        </button>
+                        </Link>
 
                     </li>
                     <li className="nav-item category">
