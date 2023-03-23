@@ -10,13 +10,15 @@ export default function Group() {
     const { group }= useParams();
 
     useEffect(() => {
-        drawingService.getAll()
+            drawingService.getAll()
             .then(result => {
+                console.log(result);
                 const newDrawing = sortCategory(result, group)
                 setDrawings(newDrawing);
 
             });
            
+        
            
            
     }, [group]);
