@@ -12,10 +12,8 @@ export default function Group() {
     useEffect(() => {
             drawingService.getAll()
             .then(result => {
-                console.log(result);
                 const newDrawing = sortCategory(result, group)
                 setDrawings(newDrawing);
-
             });
            
         

@@ -12,23 +12,27 @@ import './DetailDrawing.css'
 export default function DrawingDetail() {
     const { user } = useContext(AuthContext);
     const [currentDrawing, setCurrentDrawing] = useState({});
-    const [vote, setVote] = useState({});
     const [votes, setVotes] = useState([]);
-    const [isActive, setIsActive] = useState(false);
+    // const [isActive, setIsActive] = useState(false);
     const { drawingId } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
-            console.log(user);
+            
             const drawing = await drawingService.getOneById(drawingId);
             setCurrentDrawing(drawing)
             const drawingVotes = await voteService.getByDrawingId(drawingId);
-            setVotes(drawingVotes);
-            console.log(votes.length);
+            setVotes( drawingVotes);
+            console.log(`votes from server :`);
+            console.log(drawingVotes);
+            
         })();   
-    }, []);
+    }, [drawingId]);
 
+    console.log(`seted votes`);
+    console.log(votes);
+    console.log(votes.length);
 
     const deleteDrawing = () => {
         const confirmation = window.confirm('Are you sure you want to delete this drawing?');
@@ -50,31 +54,39 @@ export default function DrawingDetail() {
     }
 
 
-    const handleClick = () => {
-        setIsActive(current => !current);
-    }
+ 
 
-    const alreadyVoted = votes?.some(v => v._ownerId === user._id);
+    const alreadyVoted = votes.some(v => v._ownerId === user._id);
+ 
+   const userVote = votes.find(v=>v._ownerId === user._id );
+   console.log('uservote');
+   console.log(userVote);
    
+   let isActive = false;
+if(userVote !== undefined)
+{
+    isActive= true;
+}
     const voteHandler = (e) => {
 
         if(!alreadyVoted ){
             voteService.addVote(drawingId)
             .then(result =>{
-                setVote(result);
                 setVotes(oldVotes => [...oldVotes,result])
+                console.log(result);
             });      
 
-            setIsActive(false);
+           
+           
         }
         else{
-            voteService.del(vote._id);
-           setVote({});
-           setVotes(oldVotes => [...oldVotes.filter(v=>v._id!== vote._id)]);
-           setIsActive(true);
+            voteService.del(userVote._id);
+           
+           setVotes(oldVotes => [...oldVotes.filter(v=>v._id!== userVote._id)]);
+          
         }
 
-        handleClick();   
+        
     }
 
     return (
