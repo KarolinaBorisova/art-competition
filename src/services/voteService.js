@@ -6,9 +6,22 @@ export const addVote = (drawingId) => request('POST', baseUrl , {drawingId});
 
 export const  del = (voteId) =>  request('DELETE',`${baseUrl}/${voteId}`);
 
-export const getByDrawingId = (drawingId) => {
-    const realtions = encodeURIComponent(`user=_ownerId:users`);
-    const search = encodeURIComponent(`drawingId="${drawingId}"`);
+export const getByDrawingId =async (drawingId) => {
+    try {
+        const realtions = encodeURIComponent(`user=_ownerId:users`);
+        const search = encodeURIComponent(`drawingId="${drawingId}"`);
+    
+        let response = await request('GET', `${baseUrl}?where=${search}&load=${realtions}`);
 
-    return request('GET', `${baseUrl}?where=${search}&load=${realtions}`);
+        if(response.message === "Resource not found")
+        {
+            response = [];
+        }
+            console.log(response);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+  
 }
+

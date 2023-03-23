@@ -20,6 +20,7 @@ export default function DrawingDetail() {
 
     useEffect(() => {
         (async () => {
+            console.log(user);
             const drawing = await drawingService.getOneById(drawingId);
             setCurrentDrawing(drawing)
             const drawingVotes = await voteService.getByDrawingId(drawingId);
@@ -56,6 +57,7 @@ export default function DrawingDetail() {
     const alreadyVoted = votes?.some(v => v._ownerId === user._id);
    
     const voteHandler = (e) => {
+
         if(!alreadyVoted ){
             voteService.addVote(drawingId)
             .then(result =>{
@@ -91,7 +93,8 @@ export default function DrawingDetail() {
                     <div className="card-text">
                         Votes: {votes.length}
                     </div>
-                    {currentDrawing._ownerId !== user._id
+                    {
+                    currentDrawing._ownerId !== user._id && user._id != null
                         ? <button className="deatil-link category"
                                  style={{
                                          backgroundColor: isActive ? '#196d92' : '',
