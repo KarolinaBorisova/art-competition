@@ -62,9 +62,7 @@ function App() {
                         <Route path="/error" element={<Error />} />
                         <Route path="/drawings/:drawingId" element={ <DetailDrawing/>}/>
                         <Route path="/category/:group" element={<Group/>} />
-                        {/* <Route path="/category/:group" element={<IIgroup/>} />
-                        <Route path="/category/:group" element={<IIIgroup/>} />
-                        <Route path="/category/:group" element={<IVgroup/>} /> */}
+                     
                         <Route element={<RouteNotAuthenticated/>}>
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />

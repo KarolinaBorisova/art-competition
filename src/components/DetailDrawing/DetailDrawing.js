@@ -13,26 +13,20 @@ export default function DrawingDetail() {
     const { user } = useContext(AuthContext);
     const [currentDrawing, setCurrentDrawing] = useState({});
     const [votes, setVotes] = useState([]);
-    // const [isActive, setIsActive] = useState(false);
     const { drawingId } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
-            
+
             const drawing = await drawingService.getOneById(drawingId);
             setCurrentDrawing(drawing)
             const drawingVotes = await voteService.getByDrawingId(drawingId);
-            setVotes( drawingVotes);
-            console.log(`votes from server :`);
-            console.log(drawingVotes);
-            
-        })();   
+            setVotes(drawingVotes);
+
+        })();
     }, [drawingId]);
 
-    console.log(`seted votes`);
-    console.log(votes);
-    console.log(votes.length);
 
     const deleteDrawing = () => {
         const confirmation = window.confirm('Are you sure you want to delete this drawing?');
@@ -54,39 +48,31 @@ export default function DrawingDetail() {
     }
 
 
- 
-
     const alreadyVoted = votes.some(v => v._ownerId === user._id);
- 
-   const userVote = votes.find(v=>v._ownerId === user._id );
-   console.log('uservote');
-   console.log(userVote);
-   
-   let isActive = false;
-if(userVote !== undefined)
-{
-    isActive= true;
-}
+    const userVote = votes.find(v => v._ownerId === user._id);
+
+
+    let isActive = false;
+    if (userVote !== undefined) {
+        isActive = true;
+    }
     const voteHandler = (e) => {
 
-        if(!alreadyVoted ){
+        if (!alreadyVoted) {
             voteService.addVote(drawingId)
-            .then(result =>{
-                setVotes(oldVotes => [...oldVotes,result])
-                console.log(result);
-            });      
+                .then(result => {
+                    setVotes(oldVotes => [...oldVotes, result])
 
-           
-           
+                });
         }
-        else{
+        else {
             voteService.del(userVote._id);
-           
-           setVotes(oldVotes => [...oldVotes.filter(v=>v._id!== userVote._id)]);
-          
+
+            setVotes(oldVotes => [...oldVotes.filter(v => v._id !== userVote._id)]);
+
         }
 
-        
+
     }
 
     return (
@@ -106,14 +92,14 @@ if(userVote !== undefined)
                         Votes: {votes.length}
                     </div>
                     {
-                    currentDrawing._ownerId !== user._id && user._id != null
-                        ? <button className="deatil-link category"
-                                 style={{
-                                         backgroundColor: isActive ? '#196d92' : '',
-                                         color: isActive ? 'white' : '',
-                                        }}
-                                 onClick={voteHandler}>Vote</button>
-                        : null}
+                        currentDrawing._ownerId !== user._id && user._id != null
+                            ? <button className="deatil-link category"
+                                style={{
+                                    backgroundColor: isActive ? '#196d92' : '',
+                                    color: isActive ? 'white' : '',
+                                }}
+                                onClick={voteHandler}>Vote</button>
+                            : null}
                 </div>
             </div>
             {currentDrawing._ownerId == user._id

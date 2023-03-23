@@ -1,14 +1,28 @@
 
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../../contexts/AuthContext';
+
+import * as voteService from '../../../services/voteService';
 import './DrawingGroupItem.css'
 
 const DrawingGroupItem = ({
   drawing
 }) => {
   const { user } = useContext(AuthContext);
+  const [votes, setVotes] = useState([]);
 
+  useEffect(() => {
+    voteService.getByDrawingId(drawing._id)
+    .then(votesDate => {
+      console.log("votesDate");
+      console.log(votesDate);
+       setVotes(votesDate)
+    })
+   
+},[drawing._id])
+console.log("votes");
+console.log(votes);
   let selected = "";
 
   if(drawing._ownerId === user._id){
@@ -25,15 +39,8 @@ const DrawingGroupItem = ({
           <h5 className="card-title">{drawing.name}</h5>
           <h5 className="card-title">{drawing.age} years</h5>
           <div className="card-link-container">
-            {drawing._ownerId !== user._id
-              ? <> 
-              {/* <Link className="deatil-link" to={`/drawings/${drawing._id}/edit`}>Edit</Link>
-               <Link className="deatil-link" to={`/gallery/${drawing._id}`}>Delete</Link> */}
-                <p className="card-category">Vote</p>
-                
-                </>
-              : null}
-             <p className="card-title">Votes</p>
+        
+             <p className="card-title">Votes: {votes.length}</p>
 
           </div>
 

@@ -6,7 +6,7 @@ export const addVote = (drawingId) => request('POST', baseUrl , {drawingId});
 
 export const  del = (voteId) =>  request('DELETE',`${baseUrl}/${voteId}`);
 
-export const getByDrawingId =async (drawingId) => {
+export const getByDrawingId = async (drawingId) => {
     try {
         const realtions = encodeURIComponent(`user=_ownerId:users`);
         const search = encodeURIComponent(`drawingId="${drawingId}"`);
@@ -17,7 +17,7 @@ export const getByDrawingId =async (drawingId) => {
         {
             response = [];
         }
-            console.log(response);
+        
         return response;
     } catch (error) {
         console.log(error);
