@@ -39,9 +39,8 @@ export default function EditDrawing() {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        const drawingData = Object.fromEntries(new FormData(e.target));
 
-        drawingService.edit(drawingId, drawingData)
+        drawingService.edit(drawingId, currentDrawing)
         .then(result => {
             console.log(result);
             navigate(`/drawings/${result._id}`)

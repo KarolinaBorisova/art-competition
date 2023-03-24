@@ -9,11 +9,7 @@ import './Login.css';
 export default function Login() {
     const {userLogin} = useContext(AuthContext);
     const navigate = useNavigate();
-
-   const [error, setError] = useState({
-       username: '',
-       password: ''
-   })
+    const [errorMessage, setErrorMessage] = useState('');
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -25,36 +21,19 @@ export default function Login() {
 
         authService.login(email,password)
         .then(authData =>{
-            if(authData.code === 403){
-                navigate('/error');
+            console.log(authData);
+            if(authData.code == 403){  
+                setErrorMessage(authData.message)
             }
             else{
                 userLogin(authData);
                 navigate('/');
             }
            
-
         }).catch(() => {
             navigate('/error')
         })
     };
-
-   const validateUsername = (e) => {
-       const value = e.target.value;
-       let errorMessage = '';
-
-
-       if(value.length < 4){
-          errorMessage =  `${[e.target.name]} must be longer than 4 characters`;
-       }
-       else if(value.length > 10){
-        errorMessage =  `${[e.target.name]} must be shorter than 10 characters`;
-       }
-       setError(state => ({
-        ...state, 
-        [e.target.name] : errorMessage
-    }))
-   }
 
 
     return (
@@ -62,6 +41,8 @@ export default function Login() {
             <div className="form-toggle" />
             <div className="form-panel one">
                 <div className="form-header">
+                    {errorMessage!= '' &&
+                    <p style={{color: "red"}}>{errorMessage}</p>}
                     <h1>Account Login</h1>
                 </div>
                 <div className="form-content">
@@ -73,12 +54,8 @@ export default function Login() {
                                 id="email"
                                 name="email"
                                 required="required"
-                                onBlur={validateUsername}
+                               
                             />
-                            {error.username &&
-                              <span>error.username</span>
-                            }
-                          
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password</label>

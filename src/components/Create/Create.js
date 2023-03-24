@@ -31,9 +31,7 @@ export default function Create() {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        const drawingData = Object.fromEntries(new FormData(e.target));
-
-        drawingService.create(drawingData)
+        drawingService.create(formValues)
             .then(result => {
                 addDrawing(result);
                 console.log(result);
