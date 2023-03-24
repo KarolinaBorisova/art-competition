@@ -2,6 +2,7 @@ import * as drawingService from '../../services/drawingService';
 import { useContext, useState } from 'react';
 
 import { DrawingContext } from '../../contexts/DrawingContext';
+import {drawingValidator} from '../../validators/drawingValidator';
 
 import './Create.css';
 
@@ -42,27 +43,9 @@ export default function Create() {
     }
     const formChangeHandler = (e) => {
         const value = e.target.value;
-        let errors = {};
-
-
-        if (e.target.name === 'name'){
-            if(value.length < 3  || value.length > 50){
-            errors.name = 'Name should be between 3 and 50 charachters';}
-        }
-
-         if (e.target.name === 'title') {
-            if(value.length < 3  || value.length > 40){
-            errors.title = 'Title should be between 3 and 40 charachters';}
-        }
-         if (e.target.name === 'age' && Number(value) < 3 || Number(value) > 7) {
-
-            errors.age = 'Artist should be between 3 and 7 years old';
-        }
-        if (e.target.name === 'imgUrl' && value.length <3){
-           
-            errors.imgUrl = 'Not valid URL';
-        }
+        const inputName = e.target.name;
         
+        let errors = drawingValidator(inputName, value)
 
         setFormErrors(errors);
 
