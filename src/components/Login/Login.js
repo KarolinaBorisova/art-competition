@@ -12,7 +12,7 @@ export default function Login() {
 
    const [error, setError] = useState({
        username: '',
-       comment: ''
+       password: ''
    })
 
     const onSubmit = (e) => {
@@ -25,8 +25,14 @@ export default function Login() {
 
         authService.login(email,password)
         .then(authData =>{
-            userLogin(authData);
-            navigate('/');
+            if(authData.code === 403){
+                navigate('/error');
+            }
+            else{
+                userLogin(authData);
+                navigate('/');
+            }
+           
 
         }).catch(() => {
             navigate('/error')
