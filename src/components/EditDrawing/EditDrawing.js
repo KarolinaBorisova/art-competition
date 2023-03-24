@@ -5,6 +5,10 @@ import * as drawingService from "../../services/drawingService"
 import { DrawingContext } from "../../contexts/DrawingContext"
 import { drawingValidator } from "../../validators/drawingValidator";
 
+
+import './EditDrawing.css';
+
+
 export default function EditDrawing() {
 
     const [currentDrawing, setCurrentDrawing] = useState({});
@@ -15,14 +19,7 @@ export default function EditDrawing() {
         title: '',
         imgUrl: ''
     })
-    const [formValues, setFormValues] = useState({
-        name: '',
-        age: '',
-        category: '',
-        title: '',
-        imgUrl: ''
 
-    })
 
     const {} = useContext(DrawingContext);
     const {drawingId} = useParams();
@@ -33,6 +30,10 @@ export default function EditDrawing() {
         .then( drawingData => {
             setCurrentDrawing(drawingData);
         })
+        .catch(err => {
+            navigate('/error')
+        });
+
     },[drawingId])
 
     const onSubmit = (e) => {
@@ -45,6 +46,9 @@ export default function EditDrawing() {
             console.log(result);
             navigate(`/drawings/${result._id}`)
         })
+        .catch(() => {
+            navigate('/error')
+        });
 
     }
     const onChange = (e) => {
@@ -81,6 +85,8 @@ export default function EditDrawing() {
                         onBlur={formChangeHandler}
                     />
                 </div>
+                {formErrors.age &&
+                            <p className="errorMessage">{formErrors.age}</p>}
                 <div className="form-group">
                     <label htmlFor="title">Drawing title</label>
                     <input
@@ -94,6 +100,8 @@ export default function EditDrawing() {
                         onBlur={formChangeHandler}
                     />
                 </div>
+                {formErrors.title &&
+                            <p className="errorMessage">{formErrors.title}</p>}
                 <div className="form-group">
                             <label htmlFor="category">Category</label>
                             <select  
@@ -121,6 +129,8 @@ export default function EditDrawing() {
                         onBlur={formChangeHandler}
                     />
                 </div>
+                {formErrors.imgUrl &&
+                            <p className="errorMessage">{formErrors.imgUrl}</p>}
                 <div className="form-group">
                     <label htmlFor="add">Add file</label>
                     <input

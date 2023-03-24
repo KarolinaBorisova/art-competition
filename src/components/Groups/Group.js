@@ -1,5 +1,5 @@
 import { useState , useEffect} from "react";
-import { useParams} from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import { sortCategory } from "../common/sortCategory";
 import * as drawingService from '../../services/drawingService';
 import DrawingGroupItem from "./DrawingGroupItem/DrawingGroupItem";
@@ -8,12 +8,16 @@ export default function Group() {
 
     const [drawings, setDrawings] = useState([]);
     const { group }= useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
             drawingService.getAll()
             .then(result => {
                 const newDrawing = sortCategory(result, group)
                 setDrawings(newDrawing);
+            })
+            .catch(() => {
+                navigate('/error')
             });
            
         

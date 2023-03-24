@@ -63,6 +63,9 @@ export default function DrawingDetail() {
                 .then(result => {
                     setVotes(oldVotes => [...oldVotes, result])
 
+                })
+                .catch(() => {
+                    navigate('/error')
                 });
         }
         else {

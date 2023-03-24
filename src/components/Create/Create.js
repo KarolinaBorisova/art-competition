@@ -5,6 +5,7 @@ import { DrawingContext } from '../../contexts/DrawingContext';
 import {drawingValidator} from '../../validators/drawingValidator';
 
 import './Create.css';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Create() {
@@ -25,6 +26,8 @@ export default function Create() {
 
     })
 
+    const navigate = useNavigate();
+
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -35,6 +38,9 @@ export default function Create() {
                 addDrawing(result);
                 console.log(result);
             })
+            .catch(() => {
+                navigate('/error')
+            });
 
     }
 

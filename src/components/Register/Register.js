@@ -23,7 +23,10 @@ export default function Register() {
     }
 
     authService.register(email,password,username)
-    .then(authData => userLogin(authData));
+    .then(authData => userLogin(authData))
+    .catch(() => {
+      navigate('/error')
+  });
     ;
     navigate('/')
     

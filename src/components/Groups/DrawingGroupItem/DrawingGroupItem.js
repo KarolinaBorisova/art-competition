@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../../contexts/AuthContext';
 
@@ -12,6 +12,8 @@ const DrawingGroupItem = ({
   const { user } = useContext(AuthContext);
   const [votes, setVotes] = useState([]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     voteService.getByDrawingId(drawing._id)
     .then(votesDate => {
@@ -19,6 +21,9 @@ const DrawingGroupItem = ({
       console.log(votesDate);
        setVotes(votesDate)
     })
+    .catch(() => {
+      navigate('/error')
+  });
    
 },[drawing._id])
 console.log("votes");
