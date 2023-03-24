@@ -5,12 +5,15 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 export default function Header() {
     const { user } = useContext(AuthContext);
+    console.log(user);
 
     return (
 
         <div id="top" className="tm-header-container">
             <div className="row tm-site-header">
+               
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-xs-center">
+                <div className='username'>{user.username}</div>
                     <h1 className="tm-site-title">Rainbow</h1>
                     <p className="tm-site-description">Art competition 2023</p>
                 </div>

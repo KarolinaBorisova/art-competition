@@ -7,7 +7,7 @@ import './Register.css';
 export default function Register() {
 
   const { userLogin } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -22,7 +22,7 @@ export default function Register() {
      return navigate('/error')
     }
 
-    authService.register(email,password,cpassword,username)
+    authService.register(email,password,username)
     .then(authData => userLogin(authData));
     ;
     navigate('/')
@@ -37,9 +37,9 @@ export default function Register() {
         </div>
         <div className="form-content">
           <form onSubmit={onSubmit}>
-            <div className="form-group">
-              <label htmlFor="username">Username</label>
-              <input type="text" id="username" name="username" required="required" />
+          <div className="form-group">
+              <label htmlFor="email">Email Address</label>
+              <input type="email" id="email" name="email" required="required" />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
@@ -50,8 +50,8 @@ export default function Register() {
               <input type="password" id="cpassword" name="cpassword" required="required" />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email Address</label>
-              <input type="email" id="email" name="email" required="required" />
+              <label htmlFor="username">Username</label>
+              <input type="text" id="username" name="username" required="required" />
             </div>
             <div className="form-group">
               <button type="submit">Register</button>

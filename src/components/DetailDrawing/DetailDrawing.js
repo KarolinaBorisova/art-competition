@@ -78,12 +78,12 @@ export default function DrawingDetail() {
     return (
 
         <div className="card-drawing detail">
-            <h5 className="card-text title">Title: {currentDrawing.title}</h5>
+            <h5 className="card-text title">{currentDrawing.title}</h5>
             <img src={currentDrawing.imgUrl} className="card-img-top detail" alt="..." />
             <div className="card-body">
                 <div className="card-title container">
                     <div className="card-text">
-                        Author: {currentDrawing.name}
+                       {currentDrawing.name}
                     </div>
                     <button className="deatil-link category" value={currentDrawing.category} onClick={goToCategory} >{currentDrawing.category}</button>
                 </div>

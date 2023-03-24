@@ -1,5 +1,5 @@
 import {useNavigate} from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 import * as authService from '../../services/authService';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -9,7 +9,12 @@ import './Login.css';
 export default function Login() {
     const {userLogin} = useContext(AuthContext);
     const navigate = useNavigate();
-   
+
+   const [error, setError] = useState({
+       username: '',
+       comment: ''
+   })
+
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -28,6 +33,23 @@ export default function Login() {
         })
     };
 
+   const validateUsername = (e) => {
+       const value = e.target.value;
+       let errorMessage = '';
+
+
+       if(value.length < 4){
+          errorMessage =  `${[e.target.name]} must be longer than 4 characters`;
+       }
+       else if(value.length > 10){
+        errorMessage =  `${[e.target.name]} must be shorter than 10 characters`;
+       }
+       setError(state => ({
+        ...state, 
+        [e.target.name] : errorMessage
+    }))
+   }
+
 
     return (
         <div className="form">
@@ -41,11 +63,16 @@ export default function Login() {
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
                             <input
-                                type="text"
+                                type="email"
                                 id="email"
                                 name="email"
                                 required="required"
+                                onBlur={validateUsername}
                             />
+                            {error.username &&
+                              <span>error.username</span>
+                            }
+                          
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password</label>

@@ -1,4 +1,4 @@
-import { sortCategory } from "../hooks/sortCategory";
+import { sortCategory } from "../components/common/sortCategory";
 
 export const votedIgroup = (collection, user) => {
     

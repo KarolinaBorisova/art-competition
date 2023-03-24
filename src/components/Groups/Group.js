@@ -1,6 +1,6 @@
 import { useState , useEffect} from "react";
 import { useParams} from "react-router-dom";
-import { sortCategory } from "../../hooks/sortCategory";
+import { sortCategory } from "../common/sortCategory";
 import * as drawingService from '../../services/drawingService';
 import DrawingGroupItem from "./DrawingGroupItem/DrawingGroupItem";
 

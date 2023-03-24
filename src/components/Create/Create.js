@@ -1,5 +1,5 @@
 import * as drawingService from '../../services/drawingService';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 import { DrawingContext } from '../../contexts/DrawingContext';
 
@@ -8,6 +8,21 @@ import './Create.css';
 
 export default function Create() {
     const { addDrawing } = useContext(DrawingContext);
+    const [formErrors, setFormErrors] = useState({
+        name: '',
+        age: '',
+        category: '',
+        title: '',
+        imgUrl: ''
+    })
+    const [formValues, setFormValues] = useState({
+        name: '',
+        age: '',
+        category: '',
+        title: '',
+        imgUrl: ''
+
+    })
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -21,6 +36,25 @@ export default function Create() {
             })
 
     }
+
+    const onChange = (e) => {
+        setFormValues(state => ({ ...state, [e.target.name]: e.target.value }))
+    }
+    const formChangeHandler = (e) => {
+        const value = e.target.value;
+        let errors = {};
+        if (e.target.name === 'name' && value.length < 3 || value.length > 50) {
+
+            errors.name = 'Name should be between 3 and 50 charachters';
+        }
+        if (e.target.age === 'age' && Number(value) < 3 || Number(value) > 7) {
+
+            errors.age = 'Artist should be between 3 and 7 years old';
+        }
+
+        setFormErrors(errors);
+
+    };
     return (
         <div className="form">
             <div className="form-toggle" />
@@ -31,38 +65,59 @@ export default function Create() {
                 <div className="form-content">
                     <form onSubmit={onSubmit}>
                         <div className="form-group">
-                            <label htmlFor="name">Name</label>
+                            <label htmlFor="name" >Artist name</label>
                             <input
                                 type="text"
                                 required="required"
                                 name="name"
+                                id="name"
                                 placeholder="First and Last name"
+                                value={formValues.name}
+                                onChange={onChange}
+                                onBlur={formChangeHandler}
                             />
                         </div>
+                        {formErrors.name &&
+                            <p  className="errorMessage">{formErrors.name}</p>}
                         <div className="form-group">
                             <label htmlFor="age">Age</label>
                             <input
                                 type="number"
                                 required="required"
                                 name="age"
-                                min="3" 
+                                id="age"
+                                min="3"
                                 max="7"
-                       
+                                value={formValues.age}
+                                onChange={onChange}
+                                onBlur={formChangeHandler}
+
                             />
                         </div>
+                        {formErrors.age &&
+                            <p>{formErrors.age}</p>}
                         <div className="form-group">
                             <label htmlFor="title">Drawing title</label>
                             <input
                                 type="text"
                                 required="required"
                                 name="title"
+                                id="title"
                                 placeholder="Title"
+                                value={formValues.title}
+                                onChange={onChange}
                             />
                         </div>
                         <div className="form-group">
                             <label htmlFor="category">Category</label>
-                            <select  name ="category" required="required" placeholder="Title">
-                            <option value="" disabled selected>Select category</option>
+                            <select
+                                name="category"
+                                id="category"
+                                required="required"
+                                value={formValues.category}
+                                onChange={onChange}
+                                >
+                                <option value="" disabled >Select category</option>
                                 <option value="I group">I group (3-4 years)</option>
                                 <option value="II group">II group (4-5 years)</option>
                                 <option value="III group">III group (5-6 years)</option>
@@ -75,6 +130,9 @@ export default function Create() {
                                 type="text"
                                 required="required"
                                 name="imgUrl"
+                                id="imgUrl"
+                                value={formValues.imgUrl}
+                                onChange={onChange}
                             />
                         </div>
                         <div className="form-group">
