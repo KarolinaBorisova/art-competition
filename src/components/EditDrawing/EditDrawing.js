@@ -3,10 +3,27 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import * as drawingService from "../../services/drawingService"
 import { DrawingContext } from "../../contexts/DrawingContext"
+import { drawingValidator } from "../../validators/drawingValidator";
 
 export default function EditDrawing() {
 
     const [currentDrawing, setCurrentDrawing] = useState({});
+    const [formErrors, setFormErrors] = useState({
+        name: '',
+        age: '',
+        category: '',
+        title: '',
+        imgUrl: ''
+    })
+    const [formValues, setFormValues] = useState({
+        name: '',
+        age: '',
+        category: '',
+        title: '',
+        imgUrl: ''
+
+    })
+
     const {} = useContext(DrawingContext);
     const {drawingId} = useParams();
     const navigate = useNavigate();
@@ -30,6 +47,18 @@ export default function EditDrawing() {
         })
 
     }
+    const onChange = (e) => {
+        setCurrentDrawing(state => ({ ...state, [e.target.name]: e.target.value }))
+    }
+    const formChangeHandler = (e) => {
+        const value = e.target.value;
+        const inputName = e.target.name;
+        
+        let errors = drawingValidator(inputName, value)
+
+        setFormErrors(errors);
+
+    };
 
     return         <div className="form">
     <div className="form-toggle" />
@@ -40,13 +69,16 @@ export default function EditDrawing() {
         <div className="form-content">
             <form onSubmit = { onSubmit }>
                 <div className="form-group">
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name">Artist name</label>
                     <input
                         type="text"
                         required="required"
                         name="name"
+                        id="name"
                         placeholder="First and Last name"
-                        defaultValue={currentDrawing.name}
+                        value={currentDrawing.name}
+                        onChange={onChange}
+                        onBlur={formChangeHandler}
                     />
                 </div>
                 <div className="form-group">
@@ -56,13 +88,21 @@ export default function EditDrawing() {
                         required="required"
                         name="title"
                         placeholder="Title"
-                        defaultValue={currentDrawing.title}
+                        id="title"
+                        value={currentDrawing.title}
+                        onChange={onChange}
+                        onBlur={formChangeHandler}
                     />
                 </div>
                 <div className="form-group">
                             <label htmlFor="category">Category</label>
-                            <select  name ="category" required="required"  >
-                            <option value="" disabled selected>Select category</option>
+                            <select  
+                            name ="category" 
+                            required="required" 
+                            id = "category"
+                            value={currentDrawing.category}
+                            onChange={onChange}
+                             >
                                 <option value="I group">I group (3-4 years)</option>
                                 <option value="II group">II group (4-5 years)</option>
                                 <option value="III group">III group (5-6 years)</option>
@@ -75,7 +115,10 @@ export default function EditDrawing() {
                         type="text"
                         required="required"
                         name="imgUrl"
-                        defaultValue={currentDrawing.imgUrl}
+                        id="imgUrl"
+                        value={currentDrawing.imgUrl}
+                        onChange={onChange}
+                        onBlur={formChangeHandler}
                     />
                 </div>
                 <div className="form-group">
