@@ -43,14 +43,26 @@ export default function Create() {
     const formChangeHandler = (e) => {
         const value = e.target.value;
         let errors = {};
-        if (e.target.name === 'name' && value.length < 3 || value.length > 50) {
 
-            errors.name = 'Name should be between 3 and 50 charachters';
+
+        if (e.target.name === 'name'){
+            if(value.length < 3  || value.length > 50){
+            errors.name = 'Name should be between 3 and 50 charachters';}
         }
-        if (e.target.age === 'age' && Number(value) < 3 || Number(value) > 7) {
+
+         if (e.target.name === 'title') {
+            if(value.length < 3  || value.length > 40){
+            errors.title = 'Title should be between 3 and 40 charachters';}
+        }
+         if (e.target.name === 'age' && Number(value) < 3 || Number(value) > 7) {
 
             errors.age = 'Artist should be between 3 and 7 years old';
         }
+        if (e.target.name === 'imgUrl' && value.length <3){
+           
+            errors.imgUrl = 'Not valid URL';
+        }
+        
 
         setFormErrors(errors);
 
@@ -78,7 +90,7 @@ export default function Create() {
                             />
                         </div>
                         {formErrors.name &&
-                            <p  className="errorMessage">{formErrors.name}</p>}
+                            <p className="errorMessage">{formErrors.name}</p>}
                         <div className="form-group">
                             <label htmlFor="age">Age</label>
                             <input
@@ -95,7 +107,7 @@ export default function Create() {
                             />
                         </div>
                         {formErrors.age &&
-                            <p>{formErrors.age}</p>}
+                            <p className="errorMessage">{formErrors.age}</p>}
                         <div className="form-group">
                             <label htmlFor="title">Drawing title</label>
                             <input
@@ -106,23 +118,28 @@ export default function Create() {
                                 placeholder="Title"
                                 value={formValues.title}
                                 onChange={onChange}
+                                onBlur={formChangeHandler}
                             />
                         </div>
+                        {formErrors.title &&
+                            <p className="errorMessage">{formErrors.title}</p>}
                         <div className="form-group">
-                            <label htmlFor="category">Category</label>
-                            <select
-                                name="category"
-                                id="category"
-                                required="required"
-                                value={formValues.category}
-                                onChange={onChange}
+                            <div className="form-group">
+                                <label htmlFor="category">Category</label>
+                                <select
+                                    name="category"
+                                    id="category"
+                                    required="required"
+                                    value={formValues.category}
+                                    onChange={onChange}
                                 >
-                                <option value="" disabled >Select category</option>
-                                <option value="I group">I group (3-4 years)</option>
-                                <option value="II group">II group (4-5 years)</option>
-                                <option value="III group">III group (5-6 years)</option>
-                                <option value="IV group">IV group (6-7 years)</option>
-                            </select>
+                                    <option value="" disabled >Select category</option>
+                                    <option value="I group">I group (3-4 years)</option>
+                                    <option value="II group">II group (4-5 years)</option>
+                                    <option value="III group">III group (5-6 years)</option>
+                                    <option value="IV group">IV group (6-7 years)</option>
+                                </select>
+                            </div>
                         </div>
                         <div className="form-group">
                             <label htmlFor="imgUrl">Image URL</label>
@@ -133,8 +150,11 @@ export default function Create() {
                                 id="imgUrl"
                                 value={formValues.imgUrl}
                                 onChange={onChange}
+                                onBlur={formChangeHandler}
                             />
                         </div>
+                        {formErrors.imgUrl &&
+                            <p className="errorMessage">{formErrors.imgUrl}</p>}
                         <div className="form-group">
                             <label htmlFor="add">Add file</label>
                             <input

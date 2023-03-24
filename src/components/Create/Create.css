@@ -276,3 +276,6 @@ html {
     color: #4285F4 !important;
   }
   
+  .errorMessage{
+    color: red;
+  }
