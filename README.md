@@ -1,11 +1,15 @@
-# Getting Started with Create React App
+# Art competition
+
+### React application
+
+
+> Art competiton is applicaiton used in kindergardens and preschools for holding a drawing competiton. Users can easely register and login.
+> Registered users can add drawings with author`s information. Also registered users can vote for drawings, except for those he created.
+> Еach drawing falls into a different category depending on which kindregarden group the child is.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-
+##  In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -14,57 +18,28 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### This app uses softuni prictice server : [ https://github.com/softuni-practice-server/softuni-practice-server ]
 
-### `npm run build`
+To start the server manually open a command prompt and run node server.js.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project overview
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<https://user-images.githubusercontent.com/85222435/227801576-f9ee83e6-1dd7-4896-bc6c-1b56b91c57a0.png>
 
-### `npm run eject`
+- common
+<https://user-images.githubusercontent.com/85222435/227802106-3f5e235f-da85-4b39-abd6-c1ae78d79546.png>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- contexts
+<https://user-images.githubusercontent.com/85222435/227802173-fa36b417-9fbe-48fc-8078-c6a0879ebf52.png>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- hooks
+<https://user-images.githubusercontent.com/85222435/227802183-f4ed33e3-cc24-4593-bbb0-5cb810a6d531.png>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- services
+<https://user-images.githubusercontent.com/85222435/227802200-d9a01dbd-ac4a-4278-bc68-16c4591f716d.png>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- validators
+<https://user-images.githubusercontent.com/85222435/227802210-f4c380fc-172a-4c9b-bee9-e078584c950b.png>
