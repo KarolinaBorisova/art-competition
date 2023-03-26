@@ -26,7 +26,7 @@ To start the server manually open a command prompt and run node server.js.
 ## Project overview
 
 - Components
-In this folder are all of the function components used in the app.
+>In this folder are all of the function components used in the app.
 
 ![components](https://user-images.githubusercontent.com/85222435/227801576-f9ee83e6-1dd7-4896-bc6c-1b56b91c57a0.png)
 
@@ -39,11 +39,11 @@ In this folder are all of the function components used in the app.
 ![contexts](https://user-images.githubusercontent.com/85222435/227802173-fa36b417-9fbe-48fc-8078-c6a0879ebf52.png)
 
 - Hooks
-This folder contains the hook which is responsible for authentication data persistence.
+>This folder contains the hook which is responsible for authentication data persistence.
 ![hooks](https://user-images.githubusercontent.com/85222435/227802183-f4ed33e3-cc24-4593-bbb0-5cb810a6d531.png)
 
 - Services
-This folder contains the services responsible for the requests to server.
+>This folder contains the services responsible for the requests to server.
 ![services](https://user-images.githubusercontent.com/85222435/227802200-d9a01dbd-ac4a-4278-bc68-16c4591f716d.png)
 
 - Validators
