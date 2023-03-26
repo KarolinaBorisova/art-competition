@@ -25,6 +25,34 @@ To start the server manually open a command prompt and run node server.js.
 
 ## Project overview
 
+### Home page
+> Home page contains gallery with all drawings 
+![home](https://user-images.githubusercontent.com/85222435/227804340-5344bbad-fff5-49bd-9000-613a0d7fa126.png)
+
+
+- Login page
+
+![login](https://user-images.githubusercontent.com/85222435/227804353-e070fdcf-b3ac-4f71-bea6-13aae398a070.png)
+
+- Categories
+>The categories are divided by kindergarden`s age groups.Each category lead you to the specific group gallery.
+![categories](https://user-images.githubusercontent.com/85222435/227804381-6d481cfb-293c-4274-b436-ecc8b7eb138f.png)
+
+
+- Group gallery
+>In group gallery there are drawings with information about their artist and votes
+>User drawings are marked with yellow border.
+![gallery](https://user-images.githubusercontent.com/85222435/227804390-033aa15c-7090-4f35-8942-476ce771691b.png)
+
+- Drawing details
+>Click on the drawing and you can see details and different options. 
+>User can edit and delete. Others can vote for the drawing.
+![detail](https://user-images.githubusercontent.com/85222435/227804395-34b5e754-14a2-428b-b7d3-94f866832918.png)
+![detail](https://user-images.githubusercontent.com/85222435/227804400-f4f48351-27b3-4073-8a5c-6db12e1c18e5.png)
+
+
+## Project structure
+
 - Components
 >In this folder are all of the function components used in the app.
 
