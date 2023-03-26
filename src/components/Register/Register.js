@@ -35,7 +35,7 @@ export default function Register() {
 
     let errors = userDataValidator(inputName, value)
 
-    
+
     if(inputName == "cpassword" &&  (value !== formValues.password )){
       errors[inputName] = `Please make sure your passwords match.`;
     }
@@ -62,8 +62,9 @@ export default function Register() {
     authService.register(email, password, username)
       .then(authData => {
 
-        if (authData.code != 200) {
+        if (authData.code == 409) {
           setErrorMessage(authData.message);
+         console.log('here');
         }
         else {
           userLogin(authData);
