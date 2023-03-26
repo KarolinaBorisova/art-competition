@@ -28,12 +28,18 @@ export default function Register() {
   const onChange = (e) => {
     setFormValues(state => ({ ...state, [e.target.name]: e.target.value }))
   }
+
   const formChangeHandler = (e) => {
     const value = e.target.value;
     const inputName = e.target.name;
 
     let errors = userDataValidator(inputName, value)
 
+    
+    if(inputName == "cpassword" &&  (value !== formValues.password )){
+      errors[inputName] = `Please make sure your passwords match.`;
+    }
+    
     setFormErrors(errors);
 
   };
