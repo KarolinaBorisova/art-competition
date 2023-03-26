@@ -27,7 +27,7 @@ To start the server manually open a command prompt and run node server.js.
 
 - components
 
-<https://user-images.githubusercontent.com/85222435/227801576-f9ee83e6-1dd7-4896-bc6c-1b56b91c57a0.png>
+![da](https://user-images.githubusercontent.com/85222435/227801576-f9ee83e6-1dd7-4896-bc6c-1b56b91c57a0.png)
 
 - common
 <https://user-images.githubusercontent.com/85222435/227802106-3f5e235f-da85-4b39-abd6-c1ae78d79546.png>
