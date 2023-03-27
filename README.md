@@ -8,6 +8,15 @@
 > Еach drawing falls into a different category depending on which kindergarden group the child is.
 
 
+## :hammer: Used technologies
+* HTML
+* CSS
+* JavaScript 
+* ReactJS
+* [SoftUni practice server](https://github.com/softuni-practice-server/softuni-practice-server) as a backend solution
+
+
+
 ## Project overview
 
 ### Home page
