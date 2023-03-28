@@ -1,15 +1,18 @@
 import * as drawingService from '../../services/drawingService';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { DrawingContext } from '../../contexts/DrawingContext';
-import {drawingValidator} from '../../validators/drawingValidator';
+import { drawingValidator } from '../../validators/drawingValidator';
 
 import './Create.css';
 import { useNavigate } from 'react-router-dom';
+import { uploadImage } from '../../services/uploadImageCloudinary';
 
 
 export default function Create() {
     const { addDrawing } = useContext(DrawingContext);
+    const [imageSelected, setImageSelected] = useState("");
+
     const [formErrors, setFormErrors] = useState({
         name: '',
         age: '',
@@ -28,27 +31,60 @@ export default function Create() {
 
     const navigate = useNavigate();
 
-    const onSubmit = (e) => {
-        e.preventDefault();
+    useEffect(() => {
+        if (formValues.imgUrl != '') {
+            drawingService.create(formValues)
+                .then(result => {
+                    addDrawing(result);
+                    console.log("second");
+                }).catch(() => {
+                    navigate('/error')
+                });
+        }
 
-        drawingService.create(formValues)
-            .then(result => {
-                addDrawing(result);
-                console.log(result);
-            })
-            .catch(() => {
-                navigate('/error')
-            });
+
+    }, [formValues.imgUrl])
+
+    const addFile = (e) => {
+
+        setImageSelected(e.target.files[0]);
+    }
+
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        const imgUrl = 'https://res.cloudinary.com/dbk16pp6v/image/upload/'
+        const formData = new FormData();
+        formData.append("file", imageSelected);
+        formData.append("upload_preset", "jjsb6cnx");
+
+
+        // setTimeout(function () {
+        //     drawingService.create(formValues)
+        //         .then(result => {
+        //             addDrawing(result);
+        //             console.log("second");
+        //         })
+
+        // }, 3000);
+        var cloudinaryImg = await uploadImage(formData)
+        console.log(cloudinaryImg)
+        setFormValues(state => ({ ...state, imgUrl: `${imgUrl}${cloudinaryImg.public_id}` }));
+        console.log('formVAlues');
+        console.log(formValues);
 
     }
 
     const onChange = (e) => {
-        setFormValues(state => ({ ...state, [e.target.name]: e.target.value }))
+        if (e.target.name != 'imgUrl') {
+            setFormValues(state => ({ ...state, [e.target.name]: e.target.value }))
+        }
+
     }
     const formChangeHandler = (e) => {
         const value = e.target.value;
         const inputName = e.target.name;
-        
+
         let errors = drawingValidator(inputName, value)
 
         setFormErrors(errors);
@@ -128,7 +164,7 @@ export default function Create() {
                                 </select>
                             </div>
                         </div>
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label htmlFor="imgUrl">Image URL</label>
                             <input
                                 type="text"
@@ -141,12 +177,14 @@ export default function Create() {
                             />
                         </div>
                         {formErrors.imgUrl &&
-                            <p className="errorMessage">{formErrors.imgUrl}</p>}
+                            <p className="errorMessage">{formErrors.imgUrl}</p>} */}
                         <div className="form-group">
-                            <label htmlFor="add">Add file</label>
+                            <label htmlFor="imgUrl">Add file</label>
                             <input
                                 type="file"
-                                name="add"
+                                name="imgUrl"
+                                id="imgUrl"
+                                onChange={addFile}
                             />
                         </div>
                         <div className="form-group">

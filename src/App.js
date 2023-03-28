@@ -19,13 +19,10 @@ import Group from "./components/Groups/Group";
 
 
 
-// import DrawingDetail from "./components/DrawingDetail/DrawingDetail";
-
-
 /*eslint-disable*/
 function App() {
 
-    const [auth, setAuth] = useLocalStorage('auth',{});
+    const [auth, setAuth] = useLocalStorage('auth', {});
     const [drawings, setDrawings] = useState([]);
     const navigate = useNavigate();
 
@@ -41,40 +38,39 @@ function App() {
             ...state,
             drawingData
         ]);
-        
+
         navigate('/');
     }
 
-  
+
     return (
-        <AuthContext.Provider value={{user: auth, userLogin, userLogout, isAuthenticated: Boolean(auth.accessToken)}}>
+        <AuthContext.Provider value={{ user: auth, userLogin, userLogout, isAuthenticated: Boolean(auth.accessToken) }}>
             <div className="App tm-bg-img-header">
                 <Header />
+                <DrawingContext.Provider value={{ drawings, addDrawing }}>
+                    <main>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
 
-                <DrawingContext.Provider value={{drawings, addDrawing}}>
-                <main>
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        
-                       
-                  
-                        <Route path="/categories" element={<Categories />} />
-                        <Route path="/error" element={<Error />} />
-                        <Route path="/drawings/:drawingId" element={ <DetailDrawing/>}/>
-                        <Route path="/category/:group" element={<Group/>} />
-                     
-                        <Route element={<RouteNotAuthenticated/>}>
-                            <Route path="/login" element={<Login />} />
-                            <Route path="/register" element={<Register />} />
-                        </Route>
-                        <Route element={<RouteAuthenticated/>}>
-                            <Route path="/create" element={<Create />} />
-                            <Route path="/drawings/:drawingId/edit" element={<EditDrawing/>} />
-                            <Route path="/logout" element={<Logout/>} />
-                        </Route>
-                        
-                    </Routes>
-                </main>
+
+
+                            <Route path="/categories" element={<Categories />} />
+                            <Route path="/error" element={<Error />} />
+                            <Route path="/drawings/:drawingId" element={<DetailDrawing />} />
+                            <Route path="/category/:group" element={<Group />} />
+
+                            <Route element={<RouteNotAuthenticated />}>
+                                <Route path="/login" element={<Login />} />
+                                <Route path="/register" element={<Register />} />
+                            </Route>
+                            <Route element={<RouteAuthenticated />}>
+                                <Route path="/create" element={<Create />} />
+                                <Route path="/drawings/:drawingId/edit" element={<EditDrawing />} />
+                                <Route path="/logout" element={<Logout />} />
+                            </Route>
+
+                        </Routes>
+                    </main>
                 </DrawingContext.Provider>
             </div>
         </AuthContext.Provider>
