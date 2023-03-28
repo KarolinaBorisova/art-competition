@@ -14,7 +14,7 @@
 * JavaScript 
 * ReactJS
 * [SoftUni practice server](https://github.com/softuni-practice-server/softuni-practice-server) as a backend solution
-
+* [Cloudinary](https://console.cloudinary.com/) - to upload image files.
 
 
 ## Project overview
