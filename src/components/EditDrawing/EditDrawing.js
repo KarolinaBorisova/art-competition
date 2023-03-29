@@ -4,6 +4,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import * as drawingService from "../../services/drawingService"
 import { DrawingContext } from "../../contexts/DrawingContext"
 import { drawingValidator } from "../../validators/drawingValidator";
+import { uploadImage } from '../../services/uploadImageCloudinary';
+
 
 
 import './EditDrawing.css';
@@ -11,7 +13,16 @@ import './EditDrawing.css';
 
 export default function EditDrawing() {
 
+    const [imageSelected, setImageSelected] = useState("");
     const [currentDrawing, setCurrentDrawing] = useState({});
+    const [formValues, setFormValues] = useState({
+        name: '',
+        age: '',
+        category: '',
+        title: '',
+        imgUrl: ''
+
+    })
     const [formErrors, setFormErrors] = useState({
         name: '',
         age: '',
@@ -36,22 +47,56 @@ export default function EditDrawing() {
 
     },[drawingId])
 
-    const onSubmit = (e) => {
+
+    useEffect(() => {
+        if(formValues.imgUrl != ''){
+            drawingService.edit(drawingId, formValues)
+    .then(result => {
+        console.log(result);
+        navigate(`/drawings/${result._id}`)
+    })
+    .catch(() => {
+        navigate('/error')
+    });
+        }
+        
+
+    },[formValues.imgUrl])
+
+
+    
+  
+ 
+
+    const onSubmit =  async(e) => {
+        
         e.preventDefault();
+        const imgUrl = 'https://res.cloudinary.com/dbk16pp6v/image/upload/'
+        const formData = new FormData();
+        formData.append("file", imageSelected);
+        formData.append("upload_preset", "jjsb6cnx");
 
-
-        drawingService.edit(drawingId, currentDrawing)
-        .then(result => {
-            console.log(result);
-            navigate(`/drawings/${result._id}`)
-        })
-        .catch(() => {
-            navigate('/error')
-        });
-
+        var cloudinaryImg = await uploadImage(formData)
+        console.log(cloudinaryImg)
+        console.log('cloudinaryImg');
+        console.log(cloudinaryImg.public_id);
+        
+        setFormValues(state => ({ ...state, imgUrl: `${imgUrl}${cloudinaryImg.public_id}` }));
+        console.log('formVAlues');
+        console.log(formValues);    
+      
     }
+
+ 
     const onChange = (e) => {
-        setCurrentDrawing(state => ({ ...state, [e.target.name]: e.target.value }))
+        if (e.target.name != 'imgUrl') {
+            setFormValues(state => ({ ...state, [e.target.name]: e.target.value }));
+            setCurrentDrawing(state => ({ ...state, [e.target.name]: e.target.value }));
+        }
+        else{
+            setImageSelected(e.target.files[0]);
+        }
+
     }
     const formChangeHandler = (e) => {
         const value = e.target.value;
@@ -116,27 +161,17 @@ export default function EditDrawing() {
                                 <option value="IV group">IV group (6-7 years)</option>
                             </select>
                         </div>
-                <div className="form-group">
-                    <label htmlFor="imgUrl">Image URL</label>
-                    <input
-                        type="text"
-                        required="required"
-                        name="imgUrl"
-                        id="imgUrl"
-                        value={currentDrawing.imgUrl}
-                        onChange={onChange}
-                        onBlur={formChangeHandler}
-                    />
-                </div>
-                {formErrors.imgUrl &&
-                            <p className="errorMessage">{formErrors.imgUrl}</p>}
-                <div className="form-group">
-                    <label htmlFor="add">Add file</label>
-                    <input
-                        type="file"
-                        name="add"
-                    />
-                </div>
+                        <div className="form-group">
+                            <label htmlFor="imgUrl">Add file</label>
+                            <input
+                                type="file"
+                                name="imgUrl"
+                                id="imgUrl"
+                                
+                                onChange={onChange}
+                                
+                            />
+                        </div>
                 <div className="form-group">
                     <button type="submit">Edit</button>
                 </div>

@@ -45,11 +45,10 @@ export default function Create() {
 
     }, [formValues.imgUrl])
 
-    const addFile = (e) => {
-
-        setImageSelected(e.target.files[0]);
-    }
-
+    // useEffect(() => {
+    //     console.log('here');
+    //     console.log(formValues);
+    //  }, [formValues]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -58,26 +57,20 @@ export default function Create() {
         formData.append("file", imageSelected);
         formData.append("upload_preset", "jjsb6cnx");
 
-
-        // setTimeout(function () {
-        //     drawingService.create(formValues)
-        //         .then(result => {
-        //             addDrawing(result);
-        //             console.log("second");
-        //         })
-
-        // }, 3000);
         var cloudinaryImg = await uploadImage(formData)
         console.log(cloudinaryImg)
         setFormValues(state => ({ ...state, imgUrl: `${imgUrl}${cloudinaryImg.public_id}` }));
         console.log('formVAlues');
-        console.log(formValues);
+        console.log(formValues);    
 
     }
-
+    console.log(formValues);    
+  
     const onChange = (e) => {
         if (e.target.name != 'imgUrl') {
             setFormValues(state => ({ ...state, [e.target.name]: e.target.value }))
+        }else{
+            setImageSelected(e.target.files[0]);
         }
 
     }
@@ -164,27 +157,13 @@ export default function Create() {
                                 </select>
                             </div>
                         </div>
-                        {/* <div className="form-group">
-                            <label htmlFor="imgUrl">Image URL</label>
-                            <input
-                                type="text"
-                                required="required"
-                                name="imgUrl"
-                                id="imgUrl"
-                                value={formValues.imgUrl}
-                                onChange={onChange}
-                                onBlur={formChangeHandler}
-                            />
-                        </div>
-                        {formErrors.imgUrl &&
-                            <p className="errorMessage">{formErrors.imgUrl}</p>} */}
                         <div className="form-group">
                             <label htmlFor="imgUrl">Add file</label>
                             <input
                                 type="file"
                                 name="imgUrl"
                                 id="imgUrl"
-                                onChange={addFile}
+                                onChange={onChange}
                             />
                         </div>
                         <div className="form-group">

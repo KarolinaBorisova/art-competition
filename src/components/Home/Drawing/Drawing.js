@@ -26,8 +26,8 @@ const Drawing = ({
           <h5 className="card-title">{drawing.name}</h5>
           <h5 className="card-title">{drawing.age} years</h5>
           <div className="card-link-container">
-            <Link className="card-category" to={`/category/${drawing.category.replace(/\s+/g, '')}`}>
-              {drawing.category}
+            <Link className="card-category" to={`/category/${drawing.category?.replace(/\s+/g, '')}`}>
+              {drawing?.category}
             </Link>
             {drawing._ownerId !== user._id
               ? <> 
