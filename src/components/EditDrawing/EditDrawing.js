@@ -15,14 +15,6 @@ export default function EditDrawing() {
 
     const [imageSelected, setImageSelected] = useState("");
     const [currentDrawing, setCurrentDrawing] = useState({});
-    // const [formValues, setFormValues] = useState({
-    //     name: '',
-    //     age: '',
-    //     category: '',
-    //     title: '',
-    //     imgUrl: ''
-
-    // })
     const [formErrors, setFormErrors] = useState({
         name: '',
         age: '',
@@ -31,8 +23,6 @@ export default function EditDrawing() {
         imgUrl: ''
     })
 
-
-    const { } = useContext(DrawingContext);
     const { drawingId } = useParams();
     const navigate = useNavigate();
 
@@ -44,27 +34,10 @@ export default function EditDrawing() {
             })
             .catch(err => {
                 navigate('/error')
-            });
-           
+            });    
             
     }, [drawingId])
 
-
-    useEffect(() => {
-        drawingService.edit(drawingId, currentDrawing)
-            .then(result => {
-                console.log(result);
-                navigate(`/drawings/${result._id}`)
-            })
-            .catch(() => {
-                navigate('/error')
-            });
-    }, [currentDrawing.imgUrl])
-
-    console.log("currdrawing");
-    console.log(currentDrawing);
-    console.log("Files");
-    console.log(imageSelected);
 
     const onSubmit = async (e) => {
 
@@ -75,36 +48,32 @@ export default function EditDrawing() {
         formData.append("upload_preset", "jjsb6cnx");
 
         var cloudinaryImg = await uploadImage(formData)
-        console.log(cloudinaryImg)
-        console.log('cloudinaryImg');
-        console.log(cloudinaryImg.public_id);
 
         setCurrentDrawing(state => ({ ...state, imgUrl: `${imgUrl}${cloudinaryImg.public_id}` }));
+        drawingService.edit(drawingId, currentDrawing)
+                .then(result => {
+                    navigate(`/drawings/${result._id}`)
+                })
+                .catch(() => {
+                    navigate('/error')
+                });
 
     }
-    console.log('formVAlues');
-    console.log(currentDrawing);
+
 
     const onChange = (e) => {
-        if (e.target.name != 'imgUrl') {
-            // setFormValues(state => ({ ...state, [e.target.name]: e.target.value }));
             setCurrentDrawing(state => ({ ...state, [e.target.name]: e.target.value }));
+    }
 
-           
-        }
-        else {
-            setImageSelected(e.target.files[0]);
-        }
-
+    const onAdd = (e) => {
+        setImageSelected(e.target.files[0]);
     }
     const formChangeHandler = (e) => {
         const value = e.target.value;
         const inputName = e.target.name;
 
         let errors = drawingValidator(inputName, value)
-
         setFormErrors(errors);
-
     };
 
     return <div className="form">
@@ -184,7 +153,7 @@ export default function EditDrawing() {
                             name="imgUrl"
                             id="imgUrl"
 
-                            onChange={onChange}
+                            onChange={onAdd}
 
                         />
                     </div>
