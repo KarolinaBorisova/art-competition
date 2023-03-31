@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 
 import { AuthContext } from '../../contexts/AuthContext';
+import "./Header.css"
 
 export default function Header() {
     const { user } = useContext(AuthContext);
@@ -11,11 +12,10 @@ export default function Header() {
 
         <div id="top" className="tm-header-container">
             <div className="row tm-site-header">
-               
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-xs-center">
-                <div className='username'>{user.username}</div>
                     <h1 className="tm-site-title">Rainbow</h1>
                     <p className="tm-site-description">Art competition 2023</p>
+                    <div className="user-email">Hello {user?.email}</div>
                 </div>
             </div>
             <div className="row tm-navbar-row tm-navbar-row-absolute">

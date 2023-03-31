@@ -23,6 +23,7 @@ export default function EditDrawing() {
         imgUrl: ''
     })
 
+
     const { drawingId } = useParams();
     const navigate = useNavigate();
 
@@ -30,16 +31,19 @@ export default function EditDrawing() {
         drawingService.getOneById(drawingId)
             .then(drawingData => {
                 setCurrentDrawing(drawingData);
-                
+
+
             })
             .catch(err => {
                 navigate('/error')
-            });    
-            
+            });
+
     }, [drawingId])
 
 
-    const onSubmit = async (e) => {
+   
+
+    const onSubmit = (e) => {
 
         e.preventDefault();
         const imgUrl = 'https://res.cloudinary.com/dbk16pp6v/image/upload/'
@@ -47,22 +51,27 @@ export default function EditDrawing() {
         formData.append("file", imageSelected);
         formData.append("upload_preset", "jjsb6cnx");
 
-        var cloudinaryImg = await uploadImage(formData)
+        var cloudinaryImg = uploadImage(formData)
+            .then((res) => {
+                // setCurrentDrawing(state => ({ ...state, imgUrl: `${imgUrl}${res.public_id}` }));
+                // console.log("current after set", currentDrawing.public_id);
 
-        setCurrentDrawing(state => ({ ...state, imgUrl: `${imgUrl}${cloudinaryImg.public_id}` }));
-        drawingService.edit(drawingId, currentDrawing)
-                .then(result => {
-                    navigate(`/drawings/${result._id}`)
-                })
-                .catch(() => {
-                    navigate('/error')
-                });
+                const newCurrDrawing = { ...currentDrawing, imgUrl: imgUrl + res.public_id };
+
+                drawingService.edit(drawingId, newCurrDrawing)
+                    .then(result => {
+                        navigate(`/drawings/${result._id}`)
+                    })
+                    .catch(() => {
+                        navigate('/error')
+                    });
+            });
 
     }
 
 
     const onChange = (e) => {
-            setCurrentDrawing(state => ({ ...state, [e.target.name]: e.target.value }));
+        setCurrentDrawing(state => ({ ...state, [e.target.name]: e.target.value }));
     }
 
     const onAdd = (e) => {
@@ -73,7 +82,9 @@ export default function EditDrawing() {
         const inputName = e.target.name;
 
         let errors = drawingValidator(inputName, value)
+
         setFormErrors(errors);
+
     };
 
     return <div className="form">

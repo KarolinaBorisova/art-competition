@@ -101,7 +101,7 @@ export default function DrawingDetail() {
                                     backgroundColor: isActive ? '#196d92' : '',
                                     color: isActive ? 'white' : '',
                                 }}
-                                onClick={voteHandler}>Vote</button>
+                                onClick={voteHandler}> {isActive? 'Unvote' : 'Vote'}</button>
                             : null}
                 </div>
             </div>
