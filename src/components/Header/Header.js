@@ -13,8 +13,8 @@ export default function Header() {
         <div id="top" className="tm-header-container">
             <div className="row tm-site-header">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-xs-center">
-                    <h1 className="tm-site-title">Rainbow</h1>
-                    <p className="tm-site-description">Art competition 2023</p>
+                    <h1 className="tm-site-title">Rainbow Art Competition 2023</h1>
+                   
                     {user.email
                      ? <div className="user-email">Hello {user.email}</div>
                     : null}

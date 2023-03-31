@@ -10,20 +10,21 @@ body {
 	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 	font-size: 22px;
 	font-weight: 300;
+	
 }
 
 .tm-bg-img-header {
 	background-image: url('../img/rainbow-header-bg.jpg');
 	background-repeat: no-repeat;
 	background-position: center top;
-	background-size:cover;
-	min-height: 1200px;
-
-}
+	background-size: cover;
+	min-height: 90rem;
+	}
 
 .tm-bg-img-content {
 	background-image: url('../img/rainbow-content-bg.jpg');
 	background-repeat: repeat;
+	
 }
 
 a { color: #196d92;  }
@@ -37,15 +38,11 @@ a:focus,
 	outline: none;
 }
 
-.container { max-width: 1800px; }
+.container { max-width: 1040px; }
 
 /* Sticky header 
 --------------------------*/
-.tm-header-container {
-	position: relative;
-	padding-bottom: 6rem;
-	margin-bottom: 1%;
-}
+
 
 @media (max-width: 991px) {
 	.tm-header-container { margin-bottom: 5%; }
@@ -91,7 +88,7 @@ a:focus,
     text-shadow: 0px 2px 2px rgb(146, 109, 46);
     font-family: 'Times New Roman', Georgia, sans-serif;
     font-size: 4.4rem;
-    margin-top: 5rem;
+    margin-top: 10rem;
     margin-bottom: 1.5rem;
 }
 

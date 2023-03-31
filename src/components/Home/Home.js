@@ -25,7 +25,7 @@ export default function Home() {
 
             </h2>
             <h1 className="tm-site-title gallery">Gallery</h1>
-            <div className="card-deck">
+            <div className="card-deck-gallery">
                 {drawings.length > 0
 
                     ? drawings.map(x => <Drawing key={x._id} drawing={x} />)

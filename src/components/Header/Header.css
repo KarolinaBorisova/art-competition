@@ -1,3 +1,9 @@
+.tm-header-container {
+	position: relative;
+	padding-bottom: 6rem;
+	margin-bottom: 4%;
+}
+
 .user-email{
 
     font-size: 2rem;

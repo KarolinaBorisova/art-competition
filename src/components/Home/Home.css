@@ -1,4 +1,4 @@
-.card-deck {
+.card-deck-gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -6,18 +6,9 @@
     padding: 30px;
 }
 
-.card-drawing {
-    max-width: 30%;
-}
-
-.card-img-top {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-}
-
 .tm-site-title.gallery {
     text-align: center;
+    margin-top: 7rem;
 }
 
 .contest {
@@ -28,3 +19,4 @@
     margin: 0px 300px;
     text-align: center;
 }
+

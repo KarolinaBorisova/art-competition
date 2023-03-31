@@ -45,11 +45,6 @@ export default function Create() {
 
     }, [formValues.imgUrl])
 
-    // useEffect(() => {
-    //     console.log('here');
-    //     console.log(formValues);
-    //  }, [formValues]);
-
     const onSubmit = async (e) => {
         e.preventDefault();
         const imgUrl = 'https://res.cloudinary.com/dbk16pp6v/image/upload/'
