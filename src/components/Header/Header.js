@@ -15,7 +15,10 @@ export default function Header() {
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-xs-center">
                     <h1 className="tm-site-title">Rainbow</h1>
                     <p className="tm-site-description">Art competition 2023</p>
-                    <div className="user-email">Hello {user?.email}</div>
+                    {user.email
+                     ? <div className="user-email">Hello {user.email}</div>
+                    : null}
+                   
                 </div>
             </div>
             <div className="row tm-navbar-row tm-navbar-row-absolute">
