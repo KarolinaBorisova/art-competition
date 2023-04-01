@@ -6,6 +6,9 @@
     background-color: rgb(252, 240, 224);
     padding: 10px 20px;
 }
+.nav-item.category:hover {
+    transform: scale(1.1);
+}
 
 .nav.navbar-nav.category {
     margin-top: 100px;

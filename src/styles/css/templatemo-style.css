@@ -15,9 +15,9 @@ body {
 
 .tm-bg-img-header {
 	background-image: url('../img/rainbow-header-bg.jpg');
-	background-repeat: no-repeat;
+	/* background-repeat: no-repeat; */
 	background-position: center top;
-	background-size: cover;
+	background-size: contain;
 	min-height: 90rem;
 	}
 

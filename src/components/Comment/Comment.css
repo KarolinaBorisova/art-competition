@@ -1,0 +1,10 @@
+.comment{
+    width: 40%;
+    border: 1px solid rgb(25, 109, 146);
+    border-radius: 10px;
+    padding: 7px 12px;
+    color: rgb(136, 93, 52);
+}
+.comment-user{
+    font-weight: 500;
+}

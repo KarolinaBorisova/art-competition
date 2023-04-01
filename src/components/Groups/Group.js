@@ -28,7 +28,7 @@ export default function Group() {
 
     return <>
              <h1 className="tm-site-title gallery">{group}</h1>
-             <div className="card-deck">
+             <div className="card-deck-gallery">
                  {drawings.length > 0
 
                 ? drawings.map(x => <DrawingGroupItem key={x._id} drawing={x} />)

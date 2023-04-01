@@ -6,6 +6,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 import * as drawingService from '../../services/drawingService';
 import * as voteService from '../../services/voteService';
+import Comment from '../Comment/Comment'
 import './DetailDrawing.css'
 
 
@@ -79,39 +80,64 @@ export default function DrawingDetail() {
     }
 
     return (
-
-        <div className="card-drawing detail">
-            <h5 className="card-text title">{currentDrawing.title}</h5>
-            <img src={currentDrawing.imgUrl} className="card-img-top detail" alt="..." />
-            <div className="card-body">
-                <div className="card-title container">
-                    <div className="card-text">
-                       {currentDrawing.name}
+        <>
+            <div className="card-drawing detail">
+                <h5 className="card-text title">{currentDrawing.title}</h5>
+                <img src={currentDrawing.imgUrl} className="card-img-top detail" alt="..." />
+                <div className="card-body">
+                    <div className="card-title container">
+                        <div className="card-text">
+                            {currentDrawing.name}
+                        </div>
+                        <button className="deatil-link category" value={currentDrawing.category} onClick={goToCategory} >{currentDrawing.category}</button>
                     </div>
-                    <button className="deatil-link category" value={currentDrawing.category} onClick={goToCategory} >{currentDrawing.category}</button>
-                </div>
-                <div className="card-title container">
-                    <div className="card-text">
-                        Votes: {votes.length}
+                    <div className="card-title container">
+                        <div className="card-text">
+                            Votes: {votes.length}
+                        </div>
+                        {
+                            currentDrawing._ownerId !== user._id && user._id != null
+                                ? <button className="deatil-link category"
+                                    style={{
+                                        backgroundColor: isActive ? '#196d92' : '',
+                                        color: isActive ? 'white' : '',
+                                    }}
+                                    onClick={voteHandler}> {isActive ? 'Unvote' : 'Vote'}</button>
+                                : null}
                     </div>
-                    {
-                        currentDrawing._ownerId !== user._id && user._id != null
-                            ? <button className="deatil-link category"
-                                style={{
-                                    backgroundColor: isActive ? '#196d92' : '',
-                                    color: isActive ? 'white' : '',
-                                }}
-                                onClick={voteHandler}> {isActive? 'Unvote' : 'Vote'}</button>
-                            : null}
                 </div>
+                {currentDrawing._ownerId == user._id
+                    ? <div className="card-title container">
+                        <Link className="deatil-link category" to={`/drawings/${currentDrawing._id}/edit`}>Edit</Link>
+                        <button className="deatil-link category" onClick={deleteDrawing} >Delete</button>
+                    </div>
+                    : null}
             </div>
-            {currentDrawing._ownerId == user._id
-                ? <div className="card-title container">
-                    <Link className="deatil-link category" to={`/drawings/${currentDrawing._id}/edit`}>Edit</Link>
-                    <button className="deatil-link category" onClick={deleteDrawing} >Delete</button>
-                </div>
-                : null}
-        </div>
+            <div className="comments-container">
+                {/* <div className="add-comment">Add comment</div> */}
+                <Comment />
+                <div className="comment-user">Danichko</div><div className="comment">The best drawing Evre!</div>
+                <div className="comment">The best drawing Evre!</div>
+                <div className="comment">The best!</div>
+                <div className="comment">The best sfsafsadsfasfafasfasfsafsaf fsaf sadrawing Evre!</div>
+                <div className="comment">WoW!</div>
+                <div className="comment">The best drawing Evre!</div>
+                <div className="comment">The best drawing Evre!</div>
+                <div className="comment">The best!</div>
+                <div className="comment">The best sfsafsadsfasfafasfasfsafsaf fsaf sadrawing Evre!</div>
+                <div className="comment">WoW!</div>
+                <div className="comment-user">Danichko</div><div className="comment">The best drawing Evre!</div>
+                <div className="comment">The best drawing Evre!</div>
+                <div className="comment">The best!</div>
+                <div className="comment">The best sfsafsadsfasfafasfasfsafsaf fsaf sadrawing Evre!</div>
+                <div className="comment">WoW!</div>
+                <div className="comment">The best drawing Evre!</div>
+                <div className="comment">The best drawing Evre!</div>
+                <div className="comment">The best!</div>
+                <div className="comment">The best sfsafsadsfasfafasfasfsafsaf fsaf sadrawing Evre!</div>
+                <div className="comment">WoW!</div>
+            </div>
+        </>
 
     );
 };
