@@ -71,3 +71,6 @@
     transform: translate(-50%); 
     border-radius: 10px;
 }
+.comment-area{
+    background-color: transparent;
+}

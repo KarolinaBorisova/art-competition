@@ -113,6 +113,11 @@ export default function DrawingDetail() {
                     </div>
                     : null}
             </div>
+            <div>
+                <label htmlFor="">Add comment</label>
+                <textarea className="comment-area" />
+                <button>Submit</button>
+            </div>
             <div className="comments-container">
                 {/* <div className="add-comment">Add comment</div> */}
                 <Comment />
