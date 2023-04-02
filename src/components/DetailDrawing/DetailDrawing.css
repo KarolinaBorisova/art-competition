@@ -49,6 +49,7 @@
 
 .card-text.title {
     text-align: center;
+    font-size: 35px;
 }
 
 .container::after {
@@ -69,6 +70,8 @@
     margin-left: 50%;
     transform: translate(-50%); 
     border-radius: 10px;
+    max-height: 400px;
+    overflow:auto
 }
 .item{
     font-size: 25px;
@@ -83,7 +86,7 @@
     
     text-align: center;
    
-    margin-top: 30px;
+    margin-top: 50px;
     margin-bottom: 10px;
 }
 .comment-btn{
@@ -92,7 +95,6 @@
     border-radius: 25px;
     padding: 10px 30px;
     box-shadow: 11px 9px 5px -3px rgba(28, 153, 202, 0.59);
-    
     background-color: rgb(252, 240, 224);
     margin: 10px;
     color: #196d92;;

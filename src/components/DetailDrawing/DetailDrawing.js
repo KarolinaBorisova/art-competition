@@ -82,7 +82,7 @@ export default function DrawingDetail() {
     return (
         <>
             <div className="card-drawing detail">
-                <h5 className="card-text title">{currentDrawing.title}</h5>
+                <h5 className="card-text title">~ {currentDrawing.title} ~</h5>
                 <img src={currentDrawing.imgUrl} className="card-img-top detail" alt="..." />
                 <div className="card-body">
                     <div className="card-title container">
@@ -120,6 +120,14 @@ export default function DrawingDetail() {
             </div>
             <div className="comments-container">
                 {/* <div className="add-comment">Add comment</div> */}
+                <Comment />
+                <Comment />
+                <Comment />
+                <Comment />
+                <Comment />
+                <Comment />
+                <Comment />
+                <Comment />
                 <Comment />
                 <Comment />
                 <Comment />
