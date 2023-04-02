@@ -67,10 +67,33 @@
     gap: 20px;
     width: 70%;
     margin-left: 50%;
-    margin-top: 100px;
     transform: translate(-50%); 
     border-radius: 10px;
 }
+.item{
+    font-size: 25px;
+    margin: 0px 20px;
+}
 .comment-area{
-    background-color: transparent;
+    background-color: transparent; 
+   border-radius: 25px;
+   padding:10px 15px;
+}
+.write-comment-container{
+    
+    text-align: center;
+   
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.comment-btn{
+   
+    border: 1px solid #196d92;
+    border-radius: 25px;
+    padding: 10px 30px;
+    box-shadow: 11px 9px 5px -3px rgba(28, 153, 202, 0.59);
+    
+    background-color: rgb(252, 240, 224);
+    margin: 10px;
+    color: #196d92;;
 }

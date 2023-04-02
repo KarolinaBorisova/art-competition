@@ -113,34 +113,19 @@ export default function DrawingDetail() {
                     </div>
                     : null}
             </div>
-            <div>
-                <label htmlFor="">Add comment</label>
-                <textarea className="comment-area" />
-                <button>Submit</button>
+            <div className=" item write-comment-container">
+                {/* <label className="item" htmlFor="area">Write comment</label> */}
+                <textarea className="item comment-area" name="area" placeholder="Write comment"/>
+                <button className="comment-btn">Comment</button>
             </div>
             <div className="comments-container">
                 {/* <div className="add-comment">Add comment</div> */}
                 <Comment />
-                <div className="comment-user">Danichko</div><div className="comment">The best drawing Evre!</div>
-                <div className="comment">The best drawing Evre!</div>
-                <div className="comment">The best!</div>
-                <div className="comment">The best sfsafsadsfasfafasfasfsafsaf fsaf sadrawing Evre!</div>
-                <div className="comment">WoW!</div>
-                <div className="comment">The best drawing Evre!</div>
-                <div className="comment">The best drawing Evre!</div>
-                <div className="comment">The best!</div>
-                <div className="comment">The best sfsafsadsfasfafasfasfsafsaf fsaf sadrawing Evre!</div>
-                <div className="comment">WoW!</div>
-                <div className="comment-user">Danichko</div><div className="comment">The best drawing Evre!</div>
-                <div className="comment">The best drawing Evre!</div>
-                <div className="comment">The best!</div>
-                <div className="comment">The best sfsafsadsfasfafasfasfsafsaf fsaf sadrawing Evre!</div>
-                <div className="comment">WoW!</div>
-                <div className="comment">The best drawing Evre!</div>
-                <div className="comment">The best drawing Evre!</div>
-                <div className="comment">The best!</div>
-                <div className="comment">The best sfsafsadsfasfafasfasfsafsaf fsaf sadrawing Evre!</div>
-                <div className="comment">WoW!</div>
+                <Comment />
+                <Comment />
+                <Comment />
+      
+               
             </div>
         </>
 
