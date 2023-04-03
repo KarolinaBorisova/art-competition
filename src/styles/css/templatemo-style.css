@@ -18,7 +18,8 @@ body {
 	/* background-repeat: no-repeat; */
 	background-position: center top;
 	background-size: contain;
-	min-height: 90rem;
+	min-height: 80rem;
+	padding-bottom: 40px;
 	}
 
 .tm-bg-img-content {
@@ -102,7 +103,6 @@ a:focus,
 .nav {
 	display: inline-block;
 	font-size: 2.1rem;
-	overflow: auto;
 }
 
 .navbar-nav .nav-link {

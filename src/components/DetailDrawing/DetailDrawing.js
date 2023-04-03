@@ -1,11 +1,11 @@
-
 import { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, Form } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
 import * as drawingService from '../../services/drawingService';
 import * as voteService from '../../services/voteService';
+import * as commentService from '../../services/commentService';
 import Comment from '../Comment/Comment'
 import './DetailDrawing.css'
 
@@ -14,19 +14,24 @@ export default function DrawingDetail() {
     const { user } = useContext(AuthContext);
     const [currentDrawing, setCurrentDrawing] = useState({});
     const [votes, setVotes] = useState([]);
+    const [comments, setComments] = useState([]);
+
     const { drawingId } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
-
             const drawing = await drawingService.getOneById(drawingId);
             setCurrentDrawing(drawing)
             const drawingVotes = await voteService.getByDrawingId(drawingId);
             setVotes(drawingVotes);
+            const drawingComments = await commentService.getByDrawingId(drawingId);
+            setComments(drawingComments);
 
+            setCurrentDrawing( {...drawing, comments : drawingComments});
+           
         })();
-    }, [drawingId]);
+    }, []);
 
 
     const deleteDrawing = () => {
@@ -62,8 +67,8 @@ export default function DrawingDetail() {
         if (!alreadyVoted) {
             voteService.addVote(drawingId)
                 .then(result => {
+                    console.log('vote',result);
                     setVotes(oldVotes => [...oldVotes, result])
-
                 })
                 .catch(() => {
                     navigate('/error')
@@ -71,13 +76,22 @@ export default function DrawingDetail() {
         }
         else {
             voteService.del(userVote._id);
-
             setVotes(oldVotes => [...oldVotes.filter(v => v._id !== userVote._id)]);
-
         }
-
-
     }
+
+    const addCommentHandler =async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const comment = formData.get('comment');
+
+        await commentService.create(drawingId, comment);
+        const drawingComments = await commentService.getByDrawingId(drawingId);
+        setComments(drawingComments);
+           
+    }
+    
 
     return (
         <>
@@ -114,29 +128,23 @@ export default function DrawingDetail() {
                     : null}
             </div>
             <div className=" item write-comment-container">
-                {/* <label className="item" htmlFor="area">Write comment</label> */}
-                <textarea className="item comment-area" name="area" placeholder="Write comment"/>
-                <button className="comment-btn">Comment</button>
+                <form className="form" onSubmit={addCommentHandler}>
+                    <textarea
+                        className="item comment-area"
+                        name="comment"
+                        placeholder="Write comment"
+                    />
+                    <button className="comment-btn">Comment</button>
+                </form>
             </div>
             <div className="comments-container">
-                {/* <div className="add-comment">Add comment</div> */}
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
-      
-               
+                {comments.length > 0
+
+                    ?  comments.reverse().map(x => <Comment key={x._id} comment={x} />)
+                    : <h2>No comments yet</h2>
+                }
             </div>
         </>
-
     );
 };
 

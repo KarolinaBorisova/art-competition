@@ -1,10 +1,16 @@
+import { useState, useEffect } from "react";
+import { login } from "../../services/authService";
+
+import * as commentService from '../../services/commentService'
+
 import './Comment.css'
 
-export default function DrawingDetail() {
+const Comment = ({comment}) =>{
 
     return <div className='comment'>
-    <div className="comment-user">Karolina</div>
-     <div className="">The best akdniuasdbsauiubi!</div>
+    <div className="comment-user">{comment.user.username? comment.user.username : comment.user.email }</div>
+     <div className="">{comment.text}</div>
      </div>
 }
  
+export default Comment;

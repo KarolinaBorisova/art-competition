@@ -64,38 +64,46 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-  align-items: center;
+    align-items: center;
     gap: 20px;
     width: 70%;
     margin-left: 50%;
-    transform: translate(-50%); 
+    transform: translate(-50%);
     border-radius: 10px;
-    max-height: 400px;
-    overflow:auto
+    max-height: 350px;
+    overflow: auto;
 }
-.item{
+
+.item {
     font-size: 25px;
     margin: 0px 20px;
 }
-.comment-area{
-    background-color: transparent; 
-   border-radius: 25px;
-   padding:10px 15px;
+
+.comment-area {
+    background-color: transparent;
+    border-radius: 25px;
+    padding: 10px 15px;
 }
-.write-comment-container{
-    
+
+.write-comment-container {
+
     text-align: center;
-   
+
     margin-top: 50px;
     margin-bottom: 10px;
 }
-.comment-btn{
-   
+
+.comment-btn {
+
     border: 1px solid #196d92;
     border-radius: 25px;
     padding: 10px 30px;
     box-shadow: 11px 9px 5px -3px rgba(28, 153, 202, 0.59);
     background-color: rgb(252, 240, 224);
     margin: 10px;
-    color: #196d92;;
+    color: #196d92;
+    ;
+}
+.comment-btn:hover {
+    transform: scale(1.2);
 }

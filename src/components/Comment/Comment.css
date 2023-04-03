@@ -1,11 +1,11 @@
 .comment{
-    width: 40%;
+    width: 70%;
     border: 1px solid rgb(25, 109, 146);
     border-radius: 10px;
     padding: 7px 12px;
     color: rgb(136, 93, 52);
-    
     box-shadow: 10px 10px 5px -7px rgba(28, 153, 202, 0.59);
+    margin: 0 auto;
 }
 .comment-user{
     display: inline-block;
