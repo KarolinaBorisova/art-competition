@@ -46,6 +46,10 @@ export default function DrawingDetail() {
         }
     }
 
+    const commentsDel=(commentId)=>{
+       return setComments(oldComments => oldComments.filter(c=>c._id!= commentId))
+    }
+
 
 
     const goToCategory = (e) => {
@@ -144,7 +148,7 @@ export default function DrawingDetail() {
             }
             <div className="comments-container">
                 {comments.length > 0
-                    ?  comments.reverse().map(x => <Comment key={x._id} comment={x} />)
+                    ?  comments.reverse().map(x => <Comment key={x._id} comment={x} commentDel={commentsDel} />)
                     : <h2>No comments yet</h2>
                 }
             </div>
