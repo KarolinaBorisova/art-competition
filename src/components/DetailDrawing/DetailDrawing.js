@@ -6,7 +6,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import * as drawingService from '../../services/drawingService';
 import * as voteService from '../../services/voteService';
 import * as commentService from '../../services/commentService';
-import Comment from '../Comment/Comment'
+import Comment from './Comment/Comment'
 import './DetailDrawing.css'
 
 

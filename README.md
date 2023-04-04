@@ -6,6 +6,7 @@
 > Art competiton is applicaiton used in kindergardens and preschools for holding a drawing competitons. Users can easely register and login.
 > Registered users can add drawings with author`s information. Also registered users can vote for drawings, except for those they created.
 > Еach drawing falls into a different category depending on which kindergarden group the child is.
+> There are comments to each drawing. Only registerd users can write comments and delete them.
 
 
 ## :hammer: Used technologies
@@ -41,7 +42,8 @@
 
 ### Drawing details
 >Click on the drawing and you can see details and different options. 
->User can edit and delete. Others can vote for the drawing.
+>Creators can edit and delete. Others can vote for the drawing.
+>Registerd users can write comments and only crators can delete them.
 ![detail](https://user-images.githubusercontent.com/85222435/227804395-34b5e754-14a2-428b-b7d3-94f866832918.png)
 ![detail](https://user-images.githubusercontent.com/85222435/227804400-f4f48351-27b3-4073-8a5c-6db12e1c18e5.png)
 

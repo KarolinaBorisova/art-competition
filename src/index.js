@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import './styles.css';
 
 import "./styles/font-awesome-4.5.0/css/font-awesome.min.css"
 import "./styles/css/bootstrap.min.css"
