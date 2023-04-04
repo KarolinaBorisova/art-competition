@@ -22,14 +22,13 @@ export default function Login() {
         authService.login(email,password)
         .then(authData =>{
             console.log(authData);
-            if(authData.code == 403){  
+            if(authData.code === 403){  
                 setErrorMessage(authData.message)
             }
             else{
                 userLogin(authData);
                 navigate('/');
             }
-           
         }).catch(() => {
             navigate('/error')
         })
@@ -41,7 +40,7 @@ export default function Login() {
             <div className="form-toggle" />
             <div className="form-panel one">
                 <div className="form-header">
-                    {errorMessage!= '' &&
+                    {errorMessage!== '' &&
                     <p style={{color: "red"}}>{errorMessage}</p>}
                     <h1>Account Login</h1>
                 </div>
@@ -54,7 +53,6 @@ export default function Login() {
                                 id="email"
                                 name="email"
                                 required="required"
-                               
                             />
                         </div>
                         <div className="form-group">
@@ -71,9 +69,9 @@ export default function Login() {
                                 <input type="checkbox" />
                                 Remember Me
                             </label>
-                            <a className="form-recovery" href="#">
+                            {/* <a className="form-recovery" href="#">
                                 Forgot Password?
-                            </a>
+                            </a> */}
                         </div>
                         <div className="form-group">
                             <button type="submit">Log In</button>

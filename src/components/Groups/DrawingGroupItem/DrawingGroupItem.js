@@ -1,8 +1,8 @@
 
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
-import { AuthContext } from '../../../contexts/AuthContext';
 
+import { AuthContext } from '../../../contexts/AuthContext';
 import * as voteService from '../../../services/voteService';
 import './DrawingGroupItem.css'
 
@@ -24,10 +24,8 @@ const DrawingGroupItem = ({
     .catch(() => {
       navigate('/error')
   });
-   
-},[drawing._id])
-console.log("votes");
-console.log(votes);
+},[drawing._id,navigate])
+
   let selected = "";
 
   if(drawing._ownerId === user._id){
@@ -35,7 +33,6 @@ console.log(votes);
   }
   return (
     <>
-      
       <div className={`card-drawing some ${selected}`}>
       <Link className="" to={`/drawings/${drawing._id}`}>
       <img src={drawing.imgUrl} className="card-img-top" alt="..." />
@@ -44,13 +41,9 @@ console.log(votes);
           <h5 className="card-title">{drawing.name}</h5>
           <h5 className="card-title">{drawing.age} years</h5>
           <div className="card-link-container">
-        
              <p className="card-title">Votes: {votes.length}</p>
-
           </div>
-
         </div>
-
       </div>
     </>
   );

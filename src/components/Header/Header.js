@@ -9,16 +9,13 @@ export default function Header() {
     console.log(user);
 
     return (
-
         <div id="top" className="tm-header-container">
             <div className="row tm-site-header">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-xs-center">
                     <h1 className="tm-site-title">Rainbow Art Competition 2023</h1>
-                   
                     {user.email
-                     ? <div className="user-email">Hello {user.email}</div>
+                     ? <div className="user-email">Hello {user.username? user.username : user.email}</div>
                     : null}
-                   
                 </div>
             </div>
             <div className="row tm-navbar-row tm-navbar-row-absolute">
@@ -39,7 +36,6 @@ export default function Header() {
                                     </li>
                                     {user?.accessToken
                                         ? <>
-
                                             <li className="nav-item">
                                                 <Link className="nav-link" to="/create">
                                                     Add drawing
@@ -68,12 +64,9 @@ export default function Header() {
                                 </ul>
                             </div>
                         </nav>
-                    </div>{" "}
-                    {/* col-xs-12 */}
-                </div>{" "}
-                {/* tm-navbar-container */}
+                    </div>
+                </div>
             </div>
         </div>
-
     )
 }

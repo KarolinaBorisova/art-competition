@@ -12,7 +12,7 @@ export const drawingValidator = (inputName, value) => {
         if(value.length < 3  || value.length > 40){
         errors.title = 'Title should be between 3 and 40 charachters';}
     }
-     if (inputName === 'age' && Number(value) < 3 || Number(value) > 7) {
+     if (inputName === 'age' && ( Number(value) < 3 || Number(value) > 7) ){
 
         errors.age = 'Artist should be between 3 and 7 years old';
     }

@@ -19,6 +19,5 @@ export default function Logout(){
             navigate('/error')    
         })
     });
-
     return null;
 }

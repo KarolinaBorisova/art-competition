@@ -3,7 +3,7 @@ import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Logout from "./components/Logout/Logout"
-import Create from "./components/Create/Create"
+import Create from "./components/CreateDrawing/CreateDrawing"
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Categories from "./components/Header/Categories/Categories";
 import Error from "./components/Error/Error";

@@ -1,12 +1,15 @@
-import * as drawingService from '../../services/drawingService';
+
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { DrawingContext } from '../../contexts/DrawingContext';
 import { drawingValidator } from '../../validators/drawingValidator';
-
-import './Create.css';
-import { useNavigate } from 'react-router-dom';
 import { uploadImage } from '../../services/uploadImageCloudinary';
+import * as drawingService from '../../services/drawingService';
+
+import './CreateDrawing.css';
+
+
 
 
 export default function Create() {
@@ -32,7 +35,7 @@ export default function Create() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (formValues.imgUrl != '') {
+        if (formValues.imgUrl !== '') {
             drawingService.create(formValues)
                 .then(result => {
                     addDrawing(result);
@@ -62,7 +65,7 @@ export default function Create() {
     console.log(formValues);    
   
     const onChange = (e) => {
-        if (e.target.name != 'imgUrl') {
+        if (e.target.name !== 'imgUrl') {
             setFormValues(state => ({ ...state, [e.target.name]: e.target.value }))
         }else{
             setImageSelected(e.target.files[0]);

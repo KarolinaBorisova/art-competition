@@ -2,15 +2,16 @@ import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 
 import { AuthContext } from '../../contexts/AuthContext';
-import * as authService from '../../services/authService'
-
-import { userDataValidator } from '../../validators/userDataValidator'
+import { userDataValidator } from '../../validators/userDataValidator';
+import * as authService from '../../services/authService';
 
 import './Register.css';
+
 export default function Register() {
 
   const { userLogin } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const [errorMessage, setErrorMessage] = useState('');
   const [formErrors, setFormErrors] = useState({
     email: '',
@@ -18,6 +19,7 @@ export default function Register() {
     cpassword: '',
     username: ''
   })
+
   const [formValues, setFormValues] = useState({
     email: '',
     password: '',
@@ -35,13 +37,10 @@ export default function Register() {
 
     let errors = userDataValidator(inputName, value)
 
-
-    if(inputName == "cpassword" &&  (value !== formValues.password )){
+    if(inputName === "cpassword" &&  (value !== formValues.password )){
       errors[inputName] = `Please make sure your passwords match.`;
     }
-    
     setFormErrors(errors);
-
   };
 
 
@@ -62,9 +61,8 @@ export default function Register() {
     authService.register(email, password, username)
       .then(authData => {
 
-        if (authData.code == 409) {
+        if (authData.code === 409) {
           setErrorMessage(authData.message);
-         console.log('here');
         }
         else {
           userLogin(authData);
@@ -147,6 +145,5 @@ export default function Register() {
         </div>
       </div>
     </div>
-
   );
 }

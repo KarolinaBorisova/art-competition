@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link, useNavigate, Form } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -31,7 +31,7 @@ export default function DrawingDetail() {
             setCurrentDrawing( {...drawing, comments : drawingComments});
            
         })();
-    }, []);
+    }, [drawingId]);
 
 
     const deleteDrawing = () => {
@@ -47,7 +47,7 @@ export default function DrawingDetail() {
     }
 
     const commentsDel=(commentId)=>{
-       return setComments(oldComments => oldComments.filter(c=>c._id!= commentId))
+       return setComments(oldComments => oldComments.filter(c=>c._id !== commentId))
     }
 
 
@@ -125,7 +125,7 @@ export default function DrawingDetail() {
                                 : null}
                     </div>
                 </div>
-                {currentDrawing._ownerId == user._id
+                {currentDrawing._ownerId === user._id
                     ? <div className="card-title container">
                         <Link className="deatil-link category" to={`/drawings/${currentDrawing._id}/edit`}>Edit</Link>
                         <button className="deatil-link category" onClick={deleteDrawing} >Delete</button>

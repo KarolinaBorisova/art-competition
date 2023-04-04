@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom";
 
 import * as drawingService from "../../services/drawingService"
-import { DrawingContext } from "../../contexts/DrawingContext"
+
 import { drawingValidator } from "../../validators/drawingValidator";
 import { uploadImage } from '../../services/uploadImageCloudinary';
 
@@ -38,7 +38,7 @@ export default function EditDrawing() {
                 navigate('/error')
             });
 
-    }, [drawingId])
+    }, [drawingId,navigate])
 
 
    
@@ -51,7 +51,7 @@ export default function EditDrawing() {
         formData.append("file", imageSelected);
         formData.append("upload_preset", "jjsb6cnx");
 
-        var cloudinaryImg = uploadImage(formData)
+        uploadImage(formData)
             .then((res) => {
                 // setCurrentDrawing(state => ({ ...state, imgUrl: `${imgUrl}${res.public_id}` }));
                 // console.log("current after set", currentDrawing.public_id);
@@ -77,6 +77,7 @@ export default function EditDrawing() {
     const onAdd = (e) => {
         setImageSelected(e.target.files[0]);
     }
+
     const formChangeHandler = (e) => {
         const value = e.target.value;
         const inputName = e.target.name;
@@ -84,7 +85,6 @@ export default function EditDrawing() {
         let errors = drawingValidator(inputName, value)
 
         setFormErrors(errors);
-
     };
 
     return <div className="form">

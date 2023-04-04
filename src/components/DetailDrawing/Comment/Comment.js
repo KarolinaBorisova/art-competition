@@ -25,7 +25,7 @@ const Comment = ({
             <div className="comment-user">{comment.user.username ? comment.user.username : comment.user.email}</div>
             <div className="">{comment.text}</div>
         </div>
-        { user._id == comment._ownerId
+        { user._id === comment._ownerId
         ?  <div className="comment-buttons">
         <button className="btn delete" onClick={commentDelete} >Delete</button>
         </div>
