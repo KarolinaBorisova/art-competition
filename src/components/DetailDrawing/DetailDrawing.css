@@ -1,13 +1,11 @@
 .card-drawing.detail {
     margin: 0px auto;
     max-width: 50rem;
-    height: 40rem;
-
     overflow: visible;
     border: none;
     box-shadow: none;
     background-color: transparent;
-
+    margin-bottom: 50px;
 }
 
 .card-drawing:hover {
@@ -15,7 +13,6 @@
 }
 
 .card-img-top.detail {
-    height: 28rem;
     object-fit: contain;
     border-bottom: none;
 }
@@ -50,6 +47,7 @@
 .card-text.title {
     text-align: center;
     font-size: 35px;
+    margin-bottom: 20px;
 }
 
 .container::after {
@@ -65,13 +63,17 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
     width: 70%;
     margin-left: 50%;
     transform: translate(-50%);
     border-radius: 10px;
     max-height: 350px;
     overflow: auto;
+    overflow-y: scroll;
+    scrollbar-color: rgb(252, 240, 224) #196d92;
+    scrollbar-width: thin;
+    background-color: rgba(252, 240, 224, 0.26);
 }
 
 .item {
@@ -80,7 +82,7 @@
 }
 
 .comment-area {
-    background-color: transparent;
+    background-color:  rgba(252, 240, 224, 0.26);;
     border-radius: 25px;
     padding: 10px 15px;
 }
@@ -88,9 +90,7 @@
 .write-comment-container {
 
     text-align: center;
-
-    margin-top: 50px;
-    margin-bottom: 10px;
+    margin: 40px;
 }
 
 .comment-btn {
@@ -101,9 +101,16 @@
     box-shadow: 11px 9px 5px -3px rgba(28, 153, 202, 0.59);
     background-color: rgb(252, 240, 224);
     margin: 10px;
-    color: #196d92;
-    ;
+    color: rgb(4, 6, 7);
+
 }
+
 .comment-btn:hover {
     transform: scale(1.2);
+}
+
+.form-comment {
+    background-color: transparent;
+    overflow: visible;
+
 }

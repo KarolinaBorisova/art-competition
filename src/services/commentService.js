@@ -7,10 +7,6 @@ export const create = (drawingId, comment) => {
 }
 
 
-
-// Primer
-
-
 export const getByDrawingId = async (drawingId) => {
     try {
         const realtions = encodeURIComponent(`user=_ownerId:users`);
@@ -30,22 +26,5 @@ export const getByDrawingId = async (drawingId) => {
   
 }
 
-export const  getAll = async () =>{
-    try {
-        let response = await request('GET',baseUrl);
-        if(response.message === "Resource not found")
-        {
-            response = [];
-        }
-       
-        return response;
-    } catch (error) {
-        console.log(error);
-    }
-    
-};
-
-
-
-export const  del = (voteId) =>  request('DELETE',`${baseUrl}/${voteId}`);
+export const  del = (commentId) =>  request('DELETE',`${baseUrl}/${commentId}`);
 

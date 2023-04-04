@@ -85,11 +85,12 @@ export default function DrawingDetail() {
 
         const formData = new FormData(e.target);
         const comment = formData.get('comment');
+        
 
         await commentService.create(drawingId, comment);
         const drawingComments = await commentService.getByDrawingId(drawingId);
         setComments(drawingComments);
-           
+        
     }
     
 
@@ -127,19 +128,22 @@ export default function DrawingDetail() {
                     </div>
                     : null}
             </div>
-            <div className=" item write-comment-container">
-                <form className="form" onSubmit={addCommentHandler}>
-                    <textarea
-                        className="item comment-area"
-                        name="comment"
-                        placeholder="Write comment"
-                    />
-                    <button className="comment-btn">Comment</button>
-                </form>
-            </div>
+            {user._id
+            ?  <div className=" item write-comment-container">
+            <form className="form-comment" onSubmit={addCommentHandler}>
+                <textarea
+                    className="item comment-area"
+                    name="comment"
+                    placeholder="Write comment"
+                    
+                />
+                <button className="comment-btn">Comment</button>
+            </form>
+        </div>
+        : null
+            }
             <div className="comments-container">
                 {comments.length > 0
-
                     ?  comments.reverse().map(x => <Comment key={x._id} comment={x} />)
                     : <h2>No comments yet</h2>
                 }
