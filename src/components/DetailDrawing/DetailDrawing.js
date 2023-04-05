@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -12,6 +12,8 @@ import { login } from "../../services/authService";
 
 
 export default function DrawingDetail() {
+    const ref = useRef();
+
     const { user } = useContext(AuthContext);
     const [currentDrawing, setCurrentDrawing] = useState({});
     const [votes, setVotes] = useState([]);
@@ -87,10 +89,10 @@ export default function DrawingDetail() {
         
 
        const test = await commentService.create(drawingId, comment);
-        console.log("createComment", test);
         const drawingComments = await commentService.getByDrawingId(drawingId);
-        console.log("get all Commentsby id", drawingComments);
         setComments(drawingComments);
+        
+        ref.current.value='';
     }
 
     return (
@@ -134,7 +136,7 @@ export default function DrawingDetail() {
                     className="item comment-area"
                     name="comment"
                     placeholder="Write comment"
-                    
+                    ref={ref}
                 />
                 <button className="comment-btn">Comment</button>
             </form>

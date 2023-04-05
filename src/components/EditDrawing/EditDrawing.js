@@ -12,6 +12,7 @@ import './EditDrawing.css';
 
 
 export default function EditDrawing() {
+ 
 
     const [imageSelected, setImageSelected] = useState("");
     const [currentDrawing, setCurrentDrawing] = useState({});
@@ -44,6 +45,13 @@ export default function EditDrawing() {
     const onSubmit = (e) => {
 
         e.preventDefault();
+
+        if(
+            currentDrawing.name.length<3 ||
+            currentDrawing.title.length<3
+        ){
+            return ;
+        }
         const imgUrl = 'https://res.cloudinary.com/dbk16pp6v/image/upload/'
         const formData = new FormData();
 
@@ -93,7 +101,7 @@ export default function EditDrawing() {
 
         let errors = drawingValidator(inputName, value)
 
-        setFormErrors(errors);
+        setFormErrors(old=> ({...old,...errors}));
     };
 
     return <div className="form">
