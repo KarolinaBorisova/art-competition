@@ -6,7 +6,6 @@ import "./Header.css"
 
 export default function Header() {
     const { user } = useContext(AuthContext);
-    console.log(user);
 
     return (
         <div id="top" className="tm-header-container">
@@ -64,8 +63,8 @@ export default function Header() {
                                 </ul>
                             </div>
                         </nav>
-                    </div>
-                </div>
+                    </div>{" "}
+                </div>{" "}
             </div>
         </div>
     )

@@ -39,7 +39,6 @@ export default function Create() {
             drawingService.create(formValues)
                 .then(result => {
                     addDrawing(result);
-                    console.log("second");
                 }).catch(() => {
                     navigate('/error')
                 });
@@ -56,13 +55,8 @@ export default function Create() {
         formData.append("upload_preset", "jjsb6cnx");
 
         var cloudinaryImg = await uploadImage(formData)
-        console.log(cloudinaryImg)
         setFormValues(state => ({ ...state, imgUrl: `${imgUrl}${cloudinaryImg.public_id}` }));
-        console.log('formVAlues');
-        console.log(formValues);    
-
     }
-    console.log(formValues);    
   
     const onChange = (e) => {
         if (e.target.name !== 'imgUrl') {
@@ -162,6 +156,8 @@ export default function Create() {
                                 name="imgUrl"
                                 id="imgUrl"
                                 onChange={onChange}
+                                required="required"
+
                             />
                         </div>
                         <div className="form-group">

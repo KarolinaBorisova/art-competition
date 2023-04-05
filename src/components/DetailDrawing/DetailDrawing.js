@@ -8,6 +8,7 @@ import * as voteService from '../../services/voteService';
 import * as commentService from '../../services/commentService';
 import Comment from './Comment/Comment'
 import './DetailDrawing.css'
+import { login } from "../../services/authService";
 
 
 export default function DrawingDetail() {
@@ -40,7 +41,6 @@ export default function DrawingDetail() {
         if (confirmation) {
             drawingService.del(drawingId)
                 .then((res) => {
-                    console.log(res);
                     navigate('/');
                 })
         }
@@ -50,28 +50,23 @@ export default function DrawingDetail() {
        return setComments(oldComments => oldComments.filter(c=>c._id !== commentId))
     }
 
-
-
     const goToCategory = (e) => {
         var path = e.currentTarget.value;
         navigate(`/category/${path.replace(/\s+/g, '')}`)
     }
 
-
     const alreadyVoted = votes.some(v => v._ownerId === user._id);
     const userVote = votes.find(v => v._ownerId === user._id);
-
 
     let isActive = false;
     if (userVote !== undefined) {
         isActive = true;
     }
-    const voteHandler = (e) => {
 
+    const voteHandler = (e) => {
         if (!alreadyVoted) {
             voteService.addVote(drawingId)
                 .then(result => {
-                    console.log('vote',result);
                     setVotes(oldVotes => [...oldVotes, result])
                 })
                 .catch(() => {
@@ -91,12 +86,12 @@ export default function DrawingDetail() {
         const comment = formData.get('comment');
         
 
-        await commentService.create(drawingId, comment);
+       const test = await commentService.create(drawingId, comment);
+        console.log("createComment", test);
         const drawingComments = await commentService.getByDrawingId(drawingId);
+        console.log("get all Commentsby id", drawingComments);
         setComments(drawingComments);
-        
     }
-    
 
     return (
         <>

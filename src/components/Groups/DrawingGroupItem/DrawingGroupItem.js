@@ -17,8 +17,6 @@ const DrawingGroupItem = ({
   useEffect(() => {
     voteService.getByDrawingId(drawing._id)
     .then(votesDate => {
-      console.log("votesDate");
-      console.log(votesDate);
        setVotes(votesDate)
     })
     .catch(() => {

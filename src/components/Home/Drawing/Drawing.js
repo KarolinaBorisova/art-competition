@@ -17,7 +17,6 @@ const Drawing = ({
   }
   return (
     <>
-      
       <div className={`card-drawing some ${selected}`}>
       <Link className="" to={`/drawings/${drawing._id}`}>
       <img src={drawing.imgUrl} className="card-img-top" alt="..." />
@@ -36,13 +35,8 @@ const Drawing = ({
                 {/* <p className="card-category">Vote</p> */}
                 </>
               : null}
-          
-
-
           </div>
-
         </div>
-
       </div>
     </>
   );

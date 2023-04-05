@@ -17,7 +17,7 @@ export const getByDrawingId = async (drawingId) => {
         {
             response = [];
         }
-        
+            
         return response;
     } catch (error) {
         console.log(error);
