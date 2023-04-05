@@ -41,32 +41,41 @@ export default function EditDrawing() {
     }, [drawingId,navigate])
 
 
-   
-
     const onSubmit = (e) => {
 
         e.preventDefault();
         const imgUrl = 'https://res.cloudinary.com/dbk16pp6v/image/upload/'
         const formData = new FormData();
-        formData.append("file", imageSelected);
-        formData.append("upload_preset", "jjsb6cnx");
 
-        uploadImage(formData)
-            .then((res) => {
-                // setCurrentDrawing(state => ({ ...state, imgUrl: `${imgUrl}${res.public_id}` }));
-                // console.log("current after set", currentDrawing.public_id);
-
-                const newCurrDrawing = { ...currentDrawing, imgUrl: imgUrl + res.public_id };
-
-                drawingService.edit(drawingId, newCurrDrawing)
-                    .then(result => {
-                        navigate(`/drawings/${result._id}`)
-                    })
-                    .catch(() => {
-                        navigate('/error')
-                    });
-            });
-
+        if(imageSelected !== ""){
+            formData.append("file", imageSelected);
+            formData.append("upload_preset", "jjsb6cnx");
+    
+            uploadImage(formData)
+                .then((res) => {
+                    // setCurrentDrawing(state => ({ ...state, imgUrl: `${imgUrl}${res.public_id}` }));
+                    // console.log("current after set", currentDrawing.public_id);
+    
+                    const newCurrDrawing = { ...currentDrawing, imgUrl: imgUrl + res.public_id };
+    
+                    drawingService.edit(drawingId, newCurrDrawing)
+                        .then(result => {
+                            navigate(`/drawings/${result._id}`)
+                        })
+                        .catch(() => {
+                            navigate('/error')
+                        });
+                });
+        }
+        else{
+            drawingService.edit(drawingId, currentDrawing)
+            .then(result => {
+                navigate(`/drawings/${result._id}`)
+            })
+            .catch(() => {
+                navigate('/error')
+            });  
+        }
     }
 
 

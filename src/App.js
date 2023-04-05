@@ -57,6 +57,7 @@ function App() {
 
 
 
+
                             <Route path="/categories" element={<Categories />} />
                             <Route path="/error" element={<Error />} />
                             <Route path="/drawings/:drawingId" element={<DetailDrawing />} />
@@ -71,7 +72,7 @@ function App() {
                                 <Route path="/drawings/:drawingId/edit" element={<EditDrawing />} />
                                 <Route path="/logout" element={<Logout />} />
                             </Route>
-
+                            <Route path="/*" element={<Error />} />
                         </Routes>
                     </main>
                 </DrawingContext.Provider>

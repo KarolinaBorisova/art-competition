@@ -49,6 +49,12 @@ export default function Create() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        if(
+            formValues.name.length<3 ||
+            formValues.title.length<3
+        ){
+            return formErrors;
+        }
         const imgUrl = 'https://res.cloudinary.com/dbk16pp6v/image/upload/'
         const formData = new FormData();
         formData.append("file", imageSelected);
@@ -72,7 +78,7 @@ export default function Create() {
 
         let errors = drawingValidator(inputName, value)
 
-        setFormErrors(errors);
+        setFormErrors(old=> ({...old,...errors}));
 
     };
     return (
