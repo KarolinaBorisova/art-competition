@@ -119,9 +119,11 @@ a:focus,
 }
 
 @media (max-width: 767px) {
-	.nav { font-size: 1.6rem; }
+	.nav { font-size: 1.6rem; 
+			display: flex;}
 	
 	.navbar-nav .nav-item+.nav-item { margin-left: 0; }
+	
 }
 
 

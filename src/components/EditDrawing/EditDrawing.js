@@ -52,6 +52,7 @@ export default function EditDrawing() {
         ){
             return ;
         }
+        
         const imgUrl = 'https://res.cloudinary.com/dbk16pp6v/image/upload/'
         const formData = new FormData();
 
@@ -180,9 +181,8 @@ export default function EditDrawing() {
                             type="file"
                             name="imgUrl"
                             id="imgUrl"
-
                             onChange={onAdd}
-
+                            defaultValue=''
                         />
                     </div>
                     <div className="form-group">

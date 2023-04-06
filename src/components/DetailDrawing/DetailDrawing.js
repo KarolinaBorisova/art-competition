@@ -145,7 +145,7 @@ export default function DrawingDetail() {
             }
             <div className="comments-container">
                 {comments.length > 0
-                    ?  comments.reverse().map(x => <Comment key={x._id} comment={x} commentDel={commentsDel} />)
+                    ?  comments.map(x => <Comment key={x._id} comment={x} commentDel={commentsDel} />).reverse()
                     : <h2>No comments yet</h2>
                 }
             </div>
