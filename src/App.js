@@ -31,6 +31,7 @@ function App() {
     const userLogin = (authData) => {
         setAuth(authData);
     }
+
     const userLogout = () => {
         setAuth({});
     }
@@ -40,10 +41,8 @@ function App() {
             ...state,
             drawingData
         ]);
-
         navigate('/');
     }
-
 
 
     return (
@@ -54,10 +53,6 @@ function App() {
                     <main>
                         <Routes>
                             <Route path="/" element={<Home />} />
-
-
-
-
                             <Route path="/categories" element={<Categories />} />
                             <Route path="/error" element={<Error />} />
                             <Route path="/drawings/:drawingId" element={<DetailDrawing />} />

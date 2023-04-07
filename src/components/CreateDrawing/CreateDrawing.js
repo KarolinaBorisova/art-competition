@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { DrawingContext } from '../../contexts/DrawingContext';
 import { drawingValidator } from '../../validators/drawingValidator';
-import { uploadImage } from '../../services/uploadImageCloudinary';
+import {crateCloudinary} from '../common/createCloudinary';
+import * as cloudinaryService from "../../services/cloudinaryService";
 import * as drawingService from '../../services/drawingService';
 
 import './CreateDrawing.css';
@@ -45,7 +46,7 @@ export default function Create() {
         }
 
 
-    }, [formValues.imgUrl])
+    }, [formValues])
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -53,14 +54,13 @@ export default function Create() {
             formValues.name.length<3 ||
             formValues.title.length<3
         ){
-            return formErrors;
+            return ;
         }
-        const imgUrl = 'https://res.cloudinary.com/dbk16pp6v/image/upload/'
-        const formData = new FormData();
-        formData.append("file", imageSelected);
-        formData.append("upload_preset", "jjsb6cnx");
+        
+        const imgUrl = 'https://res.cloudinary.com/dbk16pp6v/image/upload/';
+        var formData = crateCloudinary(imageSelected);
 
-        var cloudinaryImg = await uploadImage(formData)
+        var cloudinaryImg = await cloudinaryService.uploadImage(formData)
         setFormValues(state => ({ ...state, imgUrl: `${imgUrl}${cloudinaryImg.public_id}` }));
     }
   

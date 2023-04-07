@@ -2,9 +2,10 @@ import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom";
 
 import * as drawingService from "../../services/drawingService"
+import * as cloudinaryService from "../../services/cloudinaryService";
 
 import { drawingValidator } from "../../validators/drawingValidator";
-import { uploadImage } from '../../services/uploadImageCloudinary';
+
 
 
 
@@ -60,7 +61,7 @@ export default function EditDrawing() {
             formData.append("file", imageSelected);
             formData.append("upload_preset", "jjsb6cnx");
     
-            uploadImage(formData)
+            cloudinaryService.uploadImage(formData)
                 .then((res) => {
                     // setCurrentDrawing(state => ({ ...state, imgUrl: `${imgUrl}${res.public_id}` }));
                     // console.log("current after set", currentDrawing.public_id);
