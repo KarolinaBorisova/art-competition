@@ -72,7 +72,7 @@ export default function Create() {
         }
 
     }
-    const formChangeHandler = (e) => {
+    const onBlurHandler = (e) => {
         const value = e.target.value;
         const inputName = e.target.name;
 
@@ -100,7 +100,7 @@ export default function Create() {
                                 placeholder="First and Last name"
                                 value={formValues.name}
                                 onChange={onChange}
-                                onBlur={formChangeHandler}
+                                onBlur={onBlurHandler}
                             />
                         </div>
                         {formErrors.name &&
@@ -116,7 +116,7 @@ export default function Create() {
                                 max="7"
                                 value={formValues.age}
                                 onChange={onChange}
-                                onBlur={formChangeHandler}
+                                onBlur={onBlurHandler}
 
                             />
                         </div>
@@ -132,7 +132,7 @@ export default function Create() {
                                 placeholder="Title"
                                 value={formValues.title}
                                 onChange={onChange}
-                                onBlur={formChangeHandler}
+                                onBlur={onBlurHandler}
                             />
                         </div>
                         {formErrors.title &&

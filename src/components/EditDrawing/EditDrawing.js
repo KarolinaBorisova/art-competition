@@ -97,7 +97,7 @@ export default function EditDrawing() {
         setImageSelected(e.target.files[0]);
     }
 
-    const formChangeHandler = (e) => {
+    const onBlurHandler = (e) => {
         const value = e.target.value;
         const inputName = e.target.name;
 
@@ -124,7 +124,7 @@ export default function EditDrawing() {
                             placeholder="First and Last name"
                             value={currentDrawing.name}
                             onChange={onChange}
-                            onBlur={formChangeHandler}
+                            onBlur={onBlurHandler}
                         />
                     </div>
                     {formErrors.name &&
@@ -140,7 +140,7 @@ export default function EditDrawing() {
                             max="7"
                             value={currentDrawing.age}
                             onChange={onChange}
-                            onBlur={formChangeHandler}
+                            onBlur={onBlurHandler}
 
                         />
                     </div>
@@ -156,7 +156,7 @@ export default function EditDrawing() {
                             id="title"
                             value={currentDrawing.title}
                             onChange={onChange}
-                            onBlur={formChangeHandler}
+                            onBlur={onBlurHandler}
                         />
                     </div>
                     {formErrors.title &&
